@@ -1,0 +1,19 @@
+@import "styles/var.scss";
+
+.logo-box {
+  display: flex;
+  align-items: flex-end;
+
+  .logo-text {
+    font-size: 30px;
+    font-family: "Roboto", sans-serif;
+  }
+
+  .logo-icon {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: $mainColor;
+    margin-left: 3px;
+  }
+}

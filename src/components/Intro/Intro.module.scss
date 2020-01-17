@@ -16,8 +16,10 @@
   font-weight: bold;
 
   font-family: "Roboto", sans-serif;
-  animation: hidden 1s normal;
-  animation-delay: 1.5s;
+  &.hidden {
+    animation: hidden 1s normal;
+    animation-delay: 1.5s;
+  }
 
   :global {
     .dot {

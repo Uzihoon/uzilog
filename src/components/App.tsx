@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch, Route, HashRouter, Redirect } from "react-router-dom";
 import { MainPage, PostPage } from "pages";
 import Intro from "components/Intro";
 
+//TEST
+import useStatusActions from "hooks/status/useStatusActions";
+
 function App() {
+  const { onFinish, onPending } = useStatusActions();
+  useEffect(() => {
+    onFinish();
+  }, []);
   return (
     <>
       <HashRouter>

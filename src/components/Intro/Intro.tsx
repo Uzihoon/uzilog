@@ -3,30 +3,41 @@ import styles from "./Intro.module.scss";
 import classNames from "classnames/bind";
 import Typed from "typed.js";
 
+import { useStatusGet } from "hooks/lib";
+
 const cx = classNames.bind(styles);
 
 function Intro() {
   const [hidden, setHidden] = useState(false);
+  const [none, setNone] = useState(false);
+  const loading = useStatusGet("loading") as boolean;
   const wrapper = useRef(null);
   let typed;
 
   useEffect(() => {
-    setTimeout(() => setHidden(true), 2500);
-  }, []);
+    if (loading) {
+      setLoading();
+    } else {
+      setTimeout(() => setNone(true), 2500);
+      setHidden(true);
+    }
+  }, [loading]);
 
-  useEffect(() => {
+  const setLoading = () => {
     if (!wrapper) return;
+
+    setNone(false);
     const options = {
       strings: ["<div class='type'>UZILOG<span class='dot'/></div>"],
       typeSpeed: 80,
       backSpeed: 50
     };
     typed = new Typed("#typho", options);
-  }, [wrapper]);
+  };
 
-  if (hidden) return <div style={{ display: "none" }} />;
+  if (none) return <div style={{ display: "none" }} />;
 
-  return <div className={cx("intro-wrapper")} id="typho" />;
+  return <div className={cx("intro-wrapper", hidden && "hidden")} id="typho" />;
 }
 
 export default Intro;

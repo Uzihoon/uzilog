@@ -9,7 +9,7 @@ import { ITagList } from "store/redux/tag";
 
 const cx = classNames.bind(styles);
 
-const test = [
+const dataList = [
   {
     title: "TEST",
     content: "Test...",
@@ -20,7 +20,7 @@ const test = [
 ];
 
 for (let i = 0; i < 30; i++) {
-  test.push({
+  dataList.push({
     title:
       "TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST",
     content:
@@ -36,7 +36,7 @@ function Main() {
 
   return (
     <div className={cx("main-wrapper")}>
-      {test.map(t => (
+      {dataList.map(t => (
         <Link to={`/post/${t.id}`} className={cx("list")} key={t.id}>
           <div className={cx("header")}>
             <div className={cx("tag")}>

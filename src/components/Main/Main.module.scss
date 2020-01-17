@@ -3,10 +3,12 @@
 .main-wrapper {
   width: 100%;
   .list {
+    display: block;
     width: 100%;
     cursor: pointer;
     transition: all 0.4s;
-    padding: 30px 10px;
+    padding: 30px 15px;
+    margin-bottom: 10px;
     &:hover {
       box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
     }
@@ -14,29 +16,48 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
       font-size: 0.8em;
 
       .tag {
-        padding: 3px 7px;
-        border-radius: 3px;
-        background-color: rgb(255, 145, 20);
-        color: #ffffff;
+        display: flex;
+        align-items: center;
+
+        .tag-title {
+          font-size: 1.2em;
+          font-weight: bold;
+          opacity: 1;
+        }
       }
 
       .date {
-        opacity: 0.5;
+        font-size: 1.2em;
+        opacity: 0.9;
       }
     }
 
     .title {
-      display: flex;
       margin-bottom: 5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: break-all;
+      line-height: 2.5em;
       .text {
         font-size: 1.5em;
-        font-weight: bold;
-        border-bottom: 3px solid $mainColor;
+        border-bottom: 1px solid $mainColor;
         margin-bottom: 5px;
+      }
+    }
+
+    .content {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: break-all;
+
+      .text {
+        font-size: 1.1em;
+        line-height: 2em;
+        opacity: 0.5;
       }
     }
   }

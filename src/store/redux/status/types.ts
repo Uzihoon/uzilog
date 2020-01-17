@@ -3,4 +3,8 @@ import * as actions from "./actions";
 
 export type StatusAction = ActionType<typeof actions>;
 
-export type StatusState = {};
+export type StatusState = {
+  loading: boolean;
+};
+
+export type StatusKey = "loading";

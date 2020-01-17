@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
 import status from "./status";
+import tag from "./tag";
 
 const rootReducer = combineReducers({
-  status
+  status,
+  tag
 });
 
 export default rootReducer;

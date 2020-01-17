@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, HashRouter, Redirect } from "react-router-dom";
-import { MainPage } from "pages";
+import { MainPage, PostPage } from "pages";
 import Intro from "components/Intro";
 
 function App() {
@@ -8,7 +8,8 @@ function App() {
     <>
       <HashRouter>
         <Switch>
-          <Route path="/" exec component={MainPage} />
+          <Route path="/" exact component={MainPage} />
+          <Route path="/post/:id" component={PostPage} />
           <Redirect to="/" />
         </Switch>
       </HashRouter>

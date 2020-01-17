@@ -1,6 +1,11 @@
 import React from "react";
 import styles from "./Main.module.scss";
 import classNames from "classnames/bind";
+import { Link } from "react-router-dom";
+
+// Reducer
+import { useTagGet } from "hooks/lib";
+import { ITagList } from "store/redux/tag";
 
 const cx = classNames.bind(styles);
 
@@ -10,34 +15,44 @@ const test = [
     content: "Test...",
     date: "20180909",
     id: 4444,
-    tag: "avc"
+    tag: "javascript"
   }
 ];
 
 for (let i = 0; i < 30; i++) {
   test.push({
-    title: "TEST",
-    content: "Test...",
+    title:
+      "TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST",
+    content:
+      "TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST...",
     date: "20180909",
     id: i,
-    tag: "abc"
+    tag: "typescript"
   });
 }
 
 function Main() {
+  const tagList = useTagGet("tagList") as ITagList;
+
   return (
     <div className={cx("main-wrapper")}>
       {test.map(t => (
-        <div className={cx("list")} key={t.id}>
+        <Link to={`/post/${t.id}`} className={cx("list")} key={t.id}>
           <div className={cx("header")}>
-            <div className={cx("tag")}>{t.tag}</div>
+            <div className={cx("tag")}>
+              <div className={cx("tag-title", t.tag)}>
+                {tagList[t.tag].text}
+              </div>
+            </div>
             <div className={cx("date")}>{t.date}</div>
           </div>
           <div className={cx("title")}>
-            <div className={cx("text")}>{t.title}</div>
+            <span className={cx("text")}>{t.title}</span>
           </div>
-          <div className={cx("content")}>{t.content}</div>
-        </div>
+          <div className={cx("content")}>
+            <span className={cx("text")}>{t.content}</span>
+          </div>
+        </Link>
       ))}
     </div>
   );

@@ -1,9 +1,24 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:900i&display=swap");
-
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR:400, 500&display=swap");
 * {
   box-sizing: border-box;
 }
 
 body {
   font-size: 14px;
+  font-family: "Noto Sans KR", sans-serif;
+  color: #222222;
+}
+
+a {
+  text-decoration: none;
+  color: #222222;
+}
+
+.typescript {
+  color: #007acc;
+}
+
+.javascript {
+  color: #f0db4f;
 }

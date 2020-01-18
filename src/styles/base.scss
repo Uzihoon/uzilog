@@ -22,3 +22,11 @@ a {
 .javascript {
   color: #f0db4f;
 }
+
+textarea,
+input {
+  border: 0;
+  &:focus {
+    outline: none !important;
+  }
+}

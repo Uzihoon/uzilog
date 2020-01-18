@@ -5,7 +5,11 @@ import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
-function Logo() {
+interface ILogoProps {
+  disable?: boolean;
+}
+
+function Logo({ disable }: ILogoProps) {
   return (
     <Link to="/" className={cx("logo-box")}>
       <div className={cx("logo-text")}>UZILOG</div>

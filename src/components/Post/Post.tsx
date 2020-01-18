@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Post.module.scss";
 import classNames from "classnames/bind";
 import ReactMarkdown from "react-markdown";
+import Code from "components/Code";
 
 import { useTagGet } from "hooks/lib";
 import { ITagList } from "store/redux/tag";
@@ -14,7 +15,8 @@ const data = {
   tag: "javascript",
   date: "20180909",
   id: 4444,
-  content: " ```javascript \n console.log()\n ```"
+  content:
+    " ## Test \n TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST\n```javascript \n console.log()\n ```"
 };
 
 function Post() {
@@ -32,7 +34,7 @@ function Post() {
         </div>
       </div>
       <div className={cx("content")}>
-        <ReactMarkdown source={data.content} />
+        <ReactMarkdown source={data.content} renderers={{ code: Code }} />
       </div>
     </div>
   );

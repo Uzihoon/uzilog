@@ -8,7 +8,6 @@ interface ICodeProps {
 }
 
 function Code({ language, value }: ICodeProps) {
-  console.log(language);
   return (
     <SyntaxHighlighter language={language} style={tomorrow}>
       {value}

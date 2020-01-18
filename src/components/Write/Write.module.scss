@@ -64,6 +64,7 @@
     background-color: #9f8a00;
     padding: 10px;
     cursor: pointer;
+    margin: 0 10px;
     .publish {
       font-weight: bold;
       color: $mainColor;
@@ -179,4 +180,9 @@ input[type="radio"]:checked + .label {
 
 .hidden {
   display: none;
+}
+
+.button-box {
+  display: flex;
+  align-items: center;
 }

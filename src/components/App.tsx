@@ -1,17 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Switch, Route, HashRouter, Redirect } from "react-router-dom";
 import { MainPage, PostPage, LoginPage, WritePage } from "pages";
 import Intro from "components/Intro";
 import PrivateRouter from "common/PrivateRouter";
-
-//TEST
-import useStatusActions from "hooks/status/useStatusActions";
+import { useStatusGet } from "hooks/lib";
 
 function App() {
-  const { onFinish, onPending } = useStatusActions();
-  useEffect(() => {
-    onFinish();
-  }, []);
+  const admin = useStatusGet("admin") as boolean;
+
   return (
     <>
       <HashRouter>
@@ -20,7 +16,7 @@ function App() {
           <Route path="/post/:id" component={PostPage} />
           <PrivateRouter
             path="/uzihoon/admin/write"
-            authed={true}
+            authed={admin}
             component={WritePage}
           />
           <Route path="/uzihoon/admin/login" component={LoginPage} />

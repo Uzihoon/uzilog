@@ -11,14 +11,15 @@ function Intro() {
   const [hidden, setHidden] = useState(false);
   const [none, setNone] = useState(false);
   const loading = useStatusGet("loading") as boolean;
-  const wrapper = useRef(null);
-  let typed;
+  let typed: any | null;
+  let wrapper: HTMLDivElement | null;
 
   useEffect(() => {
     if (loading) {
-      setLoading();
+      setNone(false);
+      setTimeout(() => setLoading(), 100);
     } else {
-      setTimeout(() => setNone(true), 2500);
+      setTimeout(() => setNone(true), 2300);
       setHidden(true);
     }
   }, [loading]);
@@ -26,18 +27,27 @@ function Intro() {
   const setLoading = () => {
     if (!wrapper) return;
 
-    setNone(false);
+    wrapper.innerHTML = "";
+
     const options = {
       strings: ["<div class='type'>UZILOG<span class='dot'/></div>"],
       typeSpeed: 80,
-      backSpeed: 50
+      backSpeed: 50,
+      backDelay: 50
+      // loop: true
     };
     typed = new Typed("#typho", options);
   };
 
   if (none) return <div style={{ display: "none" }} />;
 
-  return <div className={cx("intro-wrapper", hidden && "hidden")} id="typho" />;
+  return (
+    <div
+      ref={r => (wrapper = r)}
+      className={cx("intro-wrapper", hidden && "hidden")}
+      id="typho"
+    />
+  );
 }
 
 export default Intro;

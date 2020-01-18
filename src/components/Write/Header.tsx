@@ -5,6 +5,8 @@ import Logo from "components/Logo";
 
 import { useTagGet } from "hooks/lib";
 import { ITagList } from "store/redux/tag";
+import useStatusActions from "hooks/status/useStatusActions";
+import { useHistory } from "react-router";
 
 const cx = classNames.bind(styles);
 
@@ -35,6 +37,8 @@ interface IHeaderProps {
 function Header({ value, onChange, onPublish }: IHeaderProps) {
   const [current, setCurrent] = useState("title");
   const tagList = useTagGet("tagList") as ITagList;
+  const statusActions = useStatusActions();
+  const history = useHistory();
 
   const handleClick = (id: string) => {
     setCurrent(id);
@@ -48,6 +52,10 @@ function Header({ value, onChange, onPublish }: IHeaderProps) {
   const handleRadio = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.id;
     onChange("tag", value);
+  };
+
+  const handleLogout = () => {
+    statusActions.onLogout(history);
   };
 
   return (
@@ -65,8 +73,13 @@ function Header({ value, onChange, onPublish }: IHeaderProps) {
             </div>
           ))}
         </div>
-        <div className={cx("publish-wrapper")} onClick={onPublish}>
-          <div className={cx("publish")}>Publish</div>
+        <div className={cx("button-box")}>
+          <div className={cx("publish-wrapper")} onClick={onPublish}>
+            <div className={cx("publish")}>Publish</div>
+          </div>
+          <div className={cx("publish-wrapper")} onClick={handleLogout}>
+            <div className={cx("publish")}>Logout</div>
+          </div>
         </div>
       </div>
       <div className={cx("content-box")}>

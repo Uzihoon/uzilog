@@ -22,7 +22,7 @@ Amplify.configure({
   API: {
     endpoints: [
       {
-        name: "eun",
+        name: "uzilog",
         endpoint: config.apiGateway.URL,
         region: config.apiGateway.REGION
       }

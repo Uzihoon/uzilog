@@ -17,6 +17,7 @@
     "aws-amplify": "^2.2.2",
     "axios": "^0.19.1",
     "classnames": "^2.2.6",
+    "moment": "^2.24.0",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -35,7 +36,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "aws s3 sync build/ s3://uzilog-project --delete",
+    "postdeploy": "aws cloudfront create-invalidation --distribution-id E3HQ2OOZLNBID3 --paths /*"
   },
   "eslintConfig": {
     "extends": "react-app"

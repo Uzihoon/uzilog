@@ -4,11 +4,7 @@ import { SET_PENDING, SET_FINISH, SET_STATUS } from "./actions";
 
 const initialState: StatusState = {
   loading: true,
-  list: [],
-  post: null,
-  admin: null,
-  edit: null,
-  editInfo: null
+  admin: null
 };
 
 const status = createReducer<StatusState, StatusAction>(initialState, {

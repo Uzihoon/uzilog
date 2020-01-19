@@ -88,6 +88,7 @@ function Header({ value, onChange, onPublish }: IHeaderProps) {
             <input
               placeholder="Title"
               value={value.title}
+              name="title"
               onChange={e => handleChange(e, "title")}
             />
           </div>

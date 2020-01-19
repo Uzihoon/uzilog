@@ -4,9 +4,9 @@ import { usePostGet } from "hooks/lib";
 import { IPost } from "store/redux/post";
 
 export default function useWrite() {
-  const [content, setContent] = useState<string | undefined>();
-  const [title, setTitle] = useState<string | undefined>();
-  const [desc, setDesc] = useState<string | undefined>();
+  const [content, setContent] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
+  const [desc, setDesc] = useState<string | undefined>("");
   const [tag, setTag] = useState();
   const postActions = usePostActions();
   const edit = usePostGet("edit") as string | null;

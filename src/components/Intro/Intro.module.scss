@@ -21,6 +21,10 @@
     animation-delay: 1.5s;
   }
 
+  &.none {
+    visibility: hidden;
+  }
+
   :global {
     .dot {
       display: inline-block;

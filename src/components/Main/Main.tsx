@@ -6,23 +6,23 @@ import moment from "moment";
 import Empty from "components/Empty";
 
 // Reducer
-import { useTagGet, useStatusGet } from "hooks/lib";
+import { useTagGet, useStatusGet, usePostGet } from "hooks/lib";
 import { ITagList } from "store/redux/tag";
-import { IList } from "store/redux/status";
-import useStatusActions from "hooks/status/useStatusActions";
+import usePostActions from "hooks/post/usePostActions";
+import { IPost } from "store/redux/post";
 
 const cx = classNames.bind(styles);
 
 function Main() {
   const tagList = useTagGet("tagList") as ITagList;
-  const dataList = useStatusGet("list") as IList[];
-  const statusActions = useStatusActions();
+  const dataList = usePostGet("list") as IPost[];
+  const postActions = usePostActions();
   const admin = useStatusGet("admin") as boolean;
   const history = useHistory();
 
   useEffect(() => {
     if (dataList.length <= 0) {
-      statusActions.onGetList();
+      postActions.onGetList();
     }
   }, []);
 
@@ -31,7 +31,7 @@ function Main() {
     postId: string
   ) => {
     e.preventDefault();
-    statusActions.onDelete({ history, postId });
+    postActions.onDeletePost(postId);
   };
 
   const handleUpdate = (
@@ -41,8 +41,8 @@ function Main() {
     e.preventDefault();
     const editInfo = dataList.find(data => data.postId === postId);
     if (!editInfo) return;
-    statusActions.onSetStatus({ key: "edit", value: postId });
-    statusActions.onSetStatus({ key: "editInfo", value: editInfo });
+    postActions.onSetStore({ key: "edit", value: postId });
+    postActions.onSetStore({ key: "editInfo", value: editInfo });
     history.push("/uzihoon/admin/write");
   };
 

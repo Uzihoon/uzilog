@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Intro.module.scss";
 import classNames from "classnames/bind";
 import Typed from "typed.js";
@@ -27,7 +27,7 @@ function Intro() {
   const setLoading = () => {
     if (!wrapper) return;
 
-    wrapper.innerHTML = "";
+    // wrapper.innerHTML = "";
 
     const options = {
       strings: ["<div class='type'>UZILOG<span class='dot'/></div>"],

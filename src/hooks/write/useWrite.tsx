@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import useStatusActions from "hooks/status/useStatusActions";
-import { useStatusGet } from "hooks/lib";
-import { IList } from "store/redux/status";
+import usePostActions from "hooks/post/usePostActions";
+import { usePostGet } from "hooks/lib";
+import { IPost } from "store/redux/post";
 
 export default function useWrite() {
   const [content, setContent] = useState<string | undefined>();
   const [title, setTitle] = useState<string | undefined>();
   const [desc, setDesc] = useState<string | undefined>();
   const [tag, setTag] = useState();
-  const statusActions = useStatusActions();
-  const edit = useStatusGet("edit") as string | null;
-  const editInfo = useStatusGet("editInfo") as IList;
+  const postActions = usePostActions();
+  const edit = usePostGet("edit") as string | null;
+  const editInfo = usePostGet("editInfo") as IPost;
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     event.preventDefault();
@@ -43,11 +43,11 @@ export default function useWrite() {
   const handlePublish = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault();
     if (!title || !content || !tag) return;
-    const body = { title, content, tag, desc };
+    const body = { title, content, tag, desc } as IPost;
     if (edit) {
-      statusActions.onUpdate({ postId: edit, body });
+      postActions.onUpdatePost({ postId: edit, body });
     } else {
-      statusActions.onPosting(body);
+      postActions.onCreatePost(body);
     }
   };
 

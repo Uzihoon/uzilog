@@ -7,17 +7,17 @@ import { useParams, useHistory } from "react-router";
 import moment from "moment";
 import Empty from "components/Empty";
 
-import { useTagGet, useStatusGet } from "hooks/lib";
+import { useTagGet, usePostGet } from "hooks/lib";
 import { ITagList } from "store/redux/tag";
-import useStatusActions from "hooks/status/useStatusActions";
-import { IList } from "store/redux/status";
+import usePostActions from "hooks/post/usePostActions";
+import { IPost } from "store/redux/post";
 
 const cx = classNames.bind(styles);
 
 function Post() {
   const tagList = useTagGet("tagList") as ITagList;
-  const post = useStatusGet("post") as IList | null;
-  const statusActions = useStatusActions();
+  const post = usePostGet("post") as IPost | null;
+  const postActions = usePostActions();
   const param = useParams() as { id: string };
   const history = useHistory();
 
@@ -26,7 +26,7 @@ function Post() {
       history.push("/");
       return;
     }
-    statusActions.onGetPost(param.id);
+    postActions.onGetPost(param.id);
   }, []);
 
   if (!post) return <Empty />;

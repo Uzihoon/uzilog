@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 import status from "./status";
 import tag from "./tag";
+import post from "./post";
 
 const rootReducer = combineReducers({
   status,
-  tag
+  tag,
+  post
 });
 
 export default rootReducer;

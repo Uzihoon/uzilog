@@ -6,7 +6,9 @@ const initialState: StatusState = {
   loading: true,
   list: [],
   post: null,
-  admin: null
+  admin: null,
+  edit: null,
+  editInfo: null
 };
 
 const status = createReducer<StatusState, StatusAction>(initialState, {
@@ -21,7 +23,7 @@ const status = createReducer<StatusState, StatusAction>(initialState, {
   [SET_STATUS]: (state: StatusState, action) => {
     const { key, value } = action.payload;
     const k = key as keyof StatusState;
-    state[k] = value;
+    (state[k] as any) = value;
     return state;
   }
 });

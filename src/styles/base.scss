@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:900i&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR:400, 500&display=swap");
+@import "styles/var.scss";
+
 * {
   box-sizing: border-box;
 }
@@ -12,7 +14,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #222222;
+  color: #0091f1;
 }
 
 .typescript {
@@ -23,10 +25,70 @@ a {
   color: #f0db4f;
 }
 
+.react {
+  color: #61dafb;
+}
+
+.kubernetes {
+  color: #326ce5;
+}
+
+.devops {
+  color: #0f2c3f;
+}
+
+.ansible {
+  color: #1a1918;
+}
+
+.programming {
+  color: $mainColor;
+}
+
+.etc {
+  color: #cccccc;
+}
+
+.terraform {
+  color: #5c4ee5;
+}
+
+.aws {
+  color: #f69702;
+}
+
+.docker {
+  color: #3796ed;
+}
+
+.linux {
+  color: #e7bf5c;
+}
+
+.java {
+  color: #5382a1;
+}
+
+.kotlin {
+  color: #da6b74;
+}
+
+.angular {
+  color: #dd0031;
+}
+
+.shell {
+  color: #9cbcfd;
+}
+
 textarea,
 input {
   border: 0;
   &:focus {
     outline: none !important;
   }
+}
+
+code {
+  color: #ffad2e;
 }

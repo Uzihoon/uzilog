@@ -1,17 +1,14 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import styles from "./Write.module.scss";
 import classNames from "classnames/bind";
 
 // Reducer
 import useWrite from "hooks/write/useWrite";
-import { useStatusGet } from "hooks/lib";
 
 // Component
 import ReactMarkdown from "react-markdown";
 import Header from "components/Write/Header";
 import Code from "components/Code";
-import useStatusActions from "hooks/status/useStatusActions";
-import { useHistory } from "react-router";
 
 const cx = classNames.bind(styles);
 
@@ -19,15 +16,6 @@ function Write() {
   const { val, event } = useWrite();
   const writeRef = useRef<HTMLTextAreaElement>(null);
   const previewRef = useRef<HTMLDivElement>(null);
-  const admin = useStatusGet("admin") as boolean | null;
-  const statusActions = useStatusActions();
-  const history = useHistory();
-
-  useEffect(() => {
-    if (admin === null) {
-      statusActions.onCheckAdmin(history);
-    }
-  }, []);
 
   const handleScroll = (id: string) => {
     if (id === "write") {
@@ -48,7 +36,11 @@ function Write() {
       />
       <div className={cx("content")}>
         <div className={cx("write")} onScroll={() => handleScroll("write")}>
-          <textarea onChange={event.handleChange} ref={writeRef} />
+          <textarea
+            onChange={event.handleChange}
+            ref={writeRef}
+            value={val.content}
+          />
         </div>
         <div
           className={cx("preview")}

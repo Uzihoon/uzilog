@@ -7,7 +7,9 @@ const cx = classNames.bind(styles);
 function Footer() {
   return (
     <div className={cx("footer-wrapper")}>
-      © 2020 Uzihoon All rights reserved
+      <a href="https://github.com/Uzihoon">
+        © 2020 Uzihoon All rights reserved
+      </a>
     </div>
   );
 }

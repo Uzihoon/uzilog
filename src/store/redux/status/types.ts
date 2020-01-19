@@ -8,6 +8,8 @@ export type StatusState = {
   list: IList[];
   post: IList | null;
   admin: boolean | null;
+  edit: string | null;
+  editInfo: IList | null;
 };
 
 export interface IList {
@@ -24,9 +26,25 @@ export interface ISetStateKey {
   value: any;
 }
 
-export type StatusKey = "loading" | "list" | "post" | "admin";
+export type StatusKey =
+  | "loading"
+  | "edit"
+  | "editInfo"
+  | "list"
+  | "post"
+  | "admin";
 
 export interface ILoginParam {
   email: string;
   password: string;
+}
+
+export interface IDeleteParam {
+  postId: string;
+  history: any;
+}
+
+export interface IPostParam {
+  postId: string;
+  body: any;
 }

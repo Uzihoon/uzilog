@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch, Route, HashRouter, Redirect } from "react-router-dom";
 import { MainPage, PostPage, LoginPage, WritePage } from "pages";
 import Intro from "components/Intro";
 import PrivateRouter from "common/PrivateRouter";
 import { useStatusGet } from "hooks/lib";
+import { useHistory } from "react-router";
+import useStatusActions from "hooks/status/useStatusActions";
 
 function App() {
   const admin = useStatusGet("admin") as boolean;
+  const statusActions = useStatusActions();
+  const history = useHistory();
 
+  useEffect(() => {
+    if (admin === null) {
+      statusActions.onCheckAdmin(history);
+    }
+  }, []);
   return (
     <>
       <HashRouter>

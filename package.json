@@ -22,6 +22,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-markdown": "^4.3.1",
+    "react-notifications": "^1.4.3",
     "react-redux": "^7.1.3",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
@@ -39,7 +40,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "aws s3 sync build/ s3://uzilog-project --delete",
-    "postdeploy": "aws cloudfront create-invalidation --distribution-id E3HQ2OOZLNBID3 --paths /*"
+    "postdeploy": "aws cloudfront create-invalidation --distribution-id E76KB3YNZKGEL --paths /*"
   },
   "eslintConfig": {
     "extends": "react-app"

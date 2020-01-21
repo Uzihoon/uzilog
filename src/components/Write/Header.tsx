@@ -29,6 +29,7 @@ interface IHeaderProps {
   value: {
     title: string | undefined;
     desc: string | undefined;
+    tag: string | undefined;
   };
   onPublish: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   onChange: (a: string, b: string) => void;
@@ -111,6 +112,7 @@ function Header({ value, onChange, onPublish }: IHeaderProps) {
                   name="tag"
                   id={tag}
                   onChange={handleRadio}
+                  checked={tag === value.tag}
                   className={cx("hidden")}
                 />
                 <span className={cx("label")} />

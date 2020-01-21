@@ -7,7 +7,7 @@ export default function useWrite() {
   const [content, setContent] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [desc, setDesc] = useState<string | undefined>("");
-  const [tag, setTag] = useState();
+  const [tag, setTag] = useState("javascript");
   const postActions = usePostActions();
   const edit = usePostGet("edit") as string | null;
   const editInfo = usePostGet("editInfo") as IPost;
@@ -52,7 +52,7 @@ export default function useWrite() {
   };
 
   return {
-    val: { content, desc, title },
+    val: { content, desc, title, tag },
     event: { handleChange, handleHeader, handlePublish }
   };
 }

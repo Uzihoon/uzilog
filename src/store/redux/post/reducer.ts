@@ -4,7 +4,7 @@ import { SET_STORE } from "./actions";
 
 const initialState: PostState = {
   list: [],
-  post: null,
+  post: {},
   edit: null,
   editInfo: null
 };

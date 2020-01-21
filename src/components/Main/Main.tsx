@@ -41,8 +41,7 @@ function Main() {
     e.preventDefault();
     const editInfo = dataList.find(data => data.postId === postId);
     if (!editInfo) return;
-    postActions.onSetStore({ key: "edit", value: postId });
-    postActions.onSetStore({ key: "editInfo", value: editInfo });
+    postActions.onSetEdit(postId);
     history.push("/uzihoon/admin/write");
   };
 

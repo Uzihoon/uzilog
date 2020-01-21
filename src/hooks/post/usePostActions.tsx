@@ -35,12 +35,18 @@ export default function usePostActions() {
     [dispatch]
   );
 
+  const onSetEdit = useCallback(
+    (param: string) => dispatch(PostActions.setEdit(param)),
+    [dispatch]
+  );
+
   return {
     onGetList,
     onDeletePost,
     onUpdatePost,
     onCreatePost,
     onGetPost,
-    onSetStore
+    onSetStore,
+    onSetEdit
   };
 }

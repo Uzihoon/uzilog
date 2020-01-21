@@ -19,12 +19,12 @@ export default function useWrite() {
   };
 
   useEffect(() => {
-    if (!edit) return;
+    if (!editInfo) return;
     setContent(editInfo.content);
     setTitle(editInfo.title);
     setTag(editInfo.tag);
     setDesc(editInfo.desc);
-  }, [edit]);
+  }, [editInfo]);
 
   const handleHeader = (key: string, value: string) => {
     switch (key) {

@@ -5,10 +5,14 @@ export type PostAction = ActionType<typeof actions>;
 
 export type PostState = {
   list: IPost[];
-  post: IPost | null;
+  post: IPostBucket;
   edit: string | null;
   editInfo: IPost | null;
 };
+
+export interface IPostBucket {
+  [P: string]: IPost
+}
 
 export interface IPost {
   content: string;

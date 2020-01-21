@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Post.module.scss";
 import classNames from "classnames/bind";
 import ReactMarkdown from "react-markdown";
@@ -10,13 +10,14 @@ import Empty from "components/Empty";
 import { useTagGet, usePostGet } from "hooks/lib";
 import { ITagList } from "store/redux/tag";
 import usePostActions from "hooks/post/usePostActions";
-import { IPost } from "store/redux/post";
+import { IPostBucket, IPost } from "store/redux/post";
 
 const cx = classNames.bind(styles);
 
 function Post() {
+  const [targetPost, setTargetPost] = useState<IPost | null>(null);
   const tagList = useTagGet("tagList") as ITagList;
-  const post = usePostGet("post") as IPost | null;
+  const post = usePostGet("post") as IPostBucket;
   const postActions = usePostActions();
   const param = useParams() as { id: string };
   const history = useHistory();
@@ -26,26 +27,39 @@ function Post() {
       history.push("/");
       return;
     }
-    postActions.onGetPost(param.id);
+    const id = param.id;
+
+    if (!post[id]) {
+      postActions.onGetPost(param.id);
+    } else {
+      setTargetPost(post[id]);
+    }
   }, []);
 
-  if (!post) return <Empty />;
+  useEffect(() => {
+    if (!post[param.id]) return;
+    setTargetPost(post[param.id]);
+  }, [post[param.id]]);
+
+  if (!targetPost) return <Empty />;
 
   return (
     <div className={cx("post-wrapper")}>
       <div className={cx("header")}>
         <div className={cx("desc-box")}>
-          <div className={cx("tag", post.tag)}>{tagList[post.tag].text}</div>
+          <div className={cx("tag", targetPost.tag)}>
+            {tagList[targetPost.tag].text}
+          </div>
           <div className={cx("date")}>
-            {moment(post.date).format("YYYY-MM-DD")}
+            {moment(targetPost.date).format("YYYY-MM-DD")}
           </div>
         </div>
         <div className={cx("post-title")}>
-          <span>{post.title}</span>
+          <span>{targetPost.title}</span>
         </div>
       </div>
       <div className={cx("content")}>
-        <ReactMarkdown source={post.content} renderers={{ code: Code }} />
+        <ReactMarkdown source={targetPost.content} renderers={{ code: Code }} />
       </div>
     </div>
   );

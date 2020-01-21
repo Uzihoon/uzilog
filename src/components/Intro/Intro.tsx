@@ -16,6 +16,7 @@ function Intro() {
   useEffect(() => {
     if (loading) {
       setNone(false);
+      setHidden(false);
       setLoading();
     } else {
       setTimeout(() => setNone(true), 2300);

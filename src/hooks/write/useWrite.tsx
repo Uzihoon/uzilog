@@ -24,6 +24,10 @@ export default function useWrite() {
     setTitle(editInfo.title);
     setTag(editInfo.tag);
     setDesc(editInfo.desc);
+
+    return () => {
+      postActions.onSetStore({ key: "editInfo", value: null });
+    };
   }, [editInfo]);
 
   const handleHeader = (key: string, value: string) => {

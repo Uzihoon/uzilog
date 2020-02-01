@@ -5,7 +5,6 @@ import * as serviceWorker from "./serviceWorker";
 import Amplify from "aws-amplify";
 import "styles/base.scss";
 import config from "./config";
-import "react-notifications/lib/notifications.css";
 
 Amplify.configure({
   Auth: {

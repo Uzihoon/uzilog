@@ -44,46 +44,47 @@ function Main() {
     postActions.onSetEdit(postId);
     history.push("/uzihoon/admin/write");
   };
-
   if (dataList.length <= 0) return <Empty />;
   return (
     <div className={cx("main-wrapper")}>
-      {dataList.map(t => (
-        <Link to={`/post/${t.postId}`} className={cx("list")} key={t.postId}>
-          <div className={cx("header")}>
-            <div className={cx("tag")}>
-              <div className={cx("tag-title", t.tag)}>
-                {tagList[t.tag].text}
+      {dataList
+        .sort((a, b) => b.createdAt - a.createdAt)
+        .map(t => (
+          <Link to={`/post/${t.postId}`} className={cx("list")} key={t.postId}>
+            <div className={cx("header")}>
+              <div className={cx("tag")}>
+                <div className={cx("tag-title", t.tag)}>
+                  {tagList[t.tag].text}
+                </div>
+                {admin && (
+                  <>
+                    <div
+                      className={cx("action")}
+                      onClick={e => handleUpdate(e, t.postId)}
+                    >
+                      EDIT
+                    </div>
+                    <div
+                      className={cx("action")}
+                      onClick={e => handleDelete(e, t.postId)}
+                    >
+                      DELETE
+                    </div>
+                  </>
+                )}
               </div>
-              {admin && (
-                <>
-                  <div
-                    className={cx("action")}
-                    onClick={e => handleUpdate(e, t.postId)}
-                  >
-                    EDIT
-                  </div>
-                  <div
-                    className={cx("action")}
-                    onClick={e => handleDelete(e, t.postId)}
-                  >
-                    DELETE
-                  </div>
-                </>
-              )}
+              <div className={cx("date")}>
+                {moment(t.createdAt).format("YYYY-MM-DD")}
+              </div>
             </div>
-            <div className={cx("date")}>
-              {moment(t.date).format("YYYY-MM-DD")}
+            <div className={cx("title")}>
+              <span className={cx("text")}>{t.title}</span>
             </div>
-          </div>
-          <div className={cx("title")}>
-            <span className={cx("text")}>{t.title}</span>
-          </div>
-          <div className={cx("content")}>
-            <span className={cx("text")}>{t.desc}</span>
-          </div>
-        </Link>
-      ))}
+            <div className={cx("content")}>
+              <span className={cx("text")}>{t.desc}</span>
+            </div>
+          </Link>
+        ))}
     </div>
   );
 }

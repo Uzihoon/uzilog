@@ -11,7 +11,7 @@ export type PostState = {
 };
 
 export interface IPostBucket {
-  [P: string]: IPost
+  [P: string]: IPost;
 }
 
 export interface IPost {
@@ -19,7 +19,7 @@ export interface IPost {
   title: string;
   desc?: string;
   tag: string;
-  date: string;
+  createdAt: number;
   postId: string;
 }
 

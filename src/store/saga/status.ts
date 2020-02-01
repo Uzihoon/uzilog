@@ -7,7 +7,7 @@ import * as api from "api";
 export function* checkAdmin(action: IAction<any>) {
   const { payload: history } = action;
   try {
-    yield call(api.checkSession);
+    const data = yield call(api.checkSession);
     yield put(StatusActions.setStatus({ key: "admin", value: true }));
     history.push(history.location.pathname);
   } catch (error) {

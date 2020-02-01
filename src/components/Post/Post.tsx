@@ -51,7 +51,7 @@ function Post() {
             {tagList[targetPost.tag].text}
           </div>
           <div className={cx("date")}>
-            {moment(targetPost.date).format("YYYY-MM-DD")}
+            {moment(targetPost.createdAt).format("YYYY-MM-DD")}
           </div>
         </div>
         <div className={cx("post-title")}>

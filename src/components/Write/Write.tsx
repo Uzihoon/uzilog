@@ -40,6 +40,7 @@ function Write() {
             onChange={event.handleChange}
             ref={writeRef}
             value={val.content}
+            onPaste={event.handlePaste}
           />
         </div>
         <div

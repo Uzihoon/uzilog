@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import usePostActions from "hooks/post/usePostActions";
 import { usePostGet } from "hooks/lib";
 import { IPost } from "store/redux/post";
+import { s3Upload } from "libs/awsLib";
+import { Storage } from "aws-amplify";
 
 export default function useWrite() {
   const [content, setContent] = useState<string>("");
@@ -55,8 +57,29 @@ export default function useWrite() {
     }
   };
 
+  const toBase64 = (file: File) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+
+  const handlePaste = async (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
+    const items = e.clipboardData.items;
+    const images = [...items]
+      .filter(item => item.type.indexOf("image") >= 0)
+      .map(img => img.getAsFile())
+      .map(async img => {
+        if (!img) return;
+        const src = await s3Upload(img);
+        const url = await Storage.vault.get(src);
+        setContent(content + `![](${url})`);
+      });
+  };
+
   return {
     val: { content, desc, title, tag },
-    event: { handleChange, handleHeader, handlePublish }
+    event: { handleChange, handleHeader, handlePublish, handlePaste }
   };
 }

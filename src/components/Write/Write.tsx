@@ -41,6 +41,7 @@ function Write() {
             ref={writeRef}
             value={val.content}
             onPaste={event.handlePaste}
+            onDrop={event.handleDrop}
           />
         </div>
         <div

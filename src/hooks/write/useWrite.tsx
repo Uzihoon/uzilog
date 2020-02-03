@@ -63,6 +63,7 @@ export default function useWrite() {
   const onReset = () => {
     setContent("");
     setTitle("");
+    setDesc("");
     setTag("javascript");
   };
 

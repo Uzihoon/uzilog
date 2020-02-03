@@ -1,9 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Main.module.scss";
 import classNames from "classnames/bind";
 import { Link, useHistory } from "react-router-dom";
 import moment from "moment";
+
+// Component
 import Empty from "components/Empty";
+import ConfirmModal from "components/ConfirmModal";
 
 // Reducer
 import { useTagGet, useStatusGet, usePostGet } from "hooks/lib";
@@ -14,6 +17,8 @@ import { IPost } from "store/redux/post";
 const cx = classNames.bind(styles);
 
 function Main() {
+  const [visible, setVisible] = useState(false);
+  const [tempId, setTempId] = useState<string | null>(null);
   const tagList = useTagGet("tagList") as ITagList;
   const dataList = usePostGet("list") as IPost[];
   const postActions = usePostActions();
@@ -26,12 +31,24 @@ function Main() {
     }
   }, []);
 
-  const handleDelete = (
+  const handleDelete = () => {
+    if (!tempId) return;
+    postActions.onDeletePost(tempId);
+    setVisible(false);
+  };
+
+  const handleCancel = () => {
+    setTempId(null);
+    setVisible(false);
+  };
+
+  const confirmDelete = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
     postId: string
   ) => {
     e.preventDefault();
-    postActions.onDeletePost(postId);
+    setVisible(true);
+    setTempId(postId);
   };
 
   const handleUpdate = (
@@ -66,7 +83,7 @@ function Main() {
                     </div>
                     <div
                       className={cx("action")}
-                      onClick={e => handleDelete(e, t.postId)}
+                      onClick={e => confirmDelete(e, t.postId)}
                     >
                       DELETE
                     </div>
@@ -85,6 +102,13 @@ function Main() {
             </div>
           </Link>
         ))}
+      {visible && (
+        <ConfirmModal
+          onCancel={handleCancel}
+          visible={visible}
+          onConfirm={handleDelete}
+        />
+      )}
     </div>
   );
 }

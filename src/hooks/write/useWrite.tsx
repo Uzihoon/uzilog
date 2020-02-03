@@ -15,12 +15,19 @@ export default function useWrite() {
   const edit = usePostGet("edit") as string | null;
   const editInfo = usePostGet("editInfo") as IPost;
 
-  const handleUnmount = (img: string[]) => {
-    console.log(img);
+  const handleUnmount = (ev: BeforeUnloadEvent) => {
+    ev.returnValue = "Sure?";
+    console.log(tempImg);
+
+    return "Sure?";
   };
 
   useEffect(() => {
-    return () => handleUnmount(tempImg);
+    window.addEventListener("beforeunload", handleUnmount);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleUnmount);
+    };
   }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -35,7 +42,6 @@ export default function useWrite() {
     const url = await Storage.vault.get(src);
     setContent(content + `![](${url})`);
     setTempImg(tempImg.concat([src]));
-    console.log(tempImg.concat([src]));
   };
 
   const handleDrop = (event: React.DragEvent<HTMLTextAreaElement>) => {
@@ -65,6 +71,7 @@ export default function useWrite() {
     setTitle("");
     setDesc("");
     setTag("javascript");
+    setTempImg([]);
   };
 
   const handleHeader = (key: string, value: string) => {
@@ -109,9 +116,9 @@ export default function useWrite() {
       .map(img => img.getAsFile())
       .map(handleImg);
   };
-
+  console.log(tempImg);
   return {
-    val: { content, desc, title, tag },
+    val: { content, desc, title, tag, tempImg },
     event: {
       handleChange,
       handleDrop,

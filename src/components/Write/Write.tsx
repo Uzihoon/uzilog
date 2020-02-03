@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import styles from "./Write.module.scss";
 import classNames from "classnames/bind";
 
@@ -16,6 +16,12 @@ function Write() {
   const { val, event } = useWrite();
   const writeRef = useRef<HTMLTextAreaElement>(null);
   const previewRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    return () => {
+      console.log(val.tempImg);
+    };
+  }, []);
 
   const handleScroll = (id: string) => {
     if (id === "write") {

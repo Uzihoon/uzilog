@@ -6,7 +6,8 @@ const initialState: PostState = {
   list: [],
   post: {},
   edit: null,
-  editInfo: null
+  editInfo: null,
+  tempImg: []
 };
 
 const status = createReducer<PostState, PostAction>(initialState, {

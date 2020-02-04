@@ -23,4 +23,5 @@ function* handlePost() {
   yield takeLatest(PostActions.deletePost, PostSaga.deletePost);
   yield takeLatest(PostActions.updatePost, PostSaga.updatePost);
   yield takeLatest(PostActions.setEdit, PostSaga.setEdit);
+  yield takeLatest(PostActions.deleteTemp, PostSaga.deleteTemp);
 }

@@ -17,12 +17,6 @@ function Write() {
   const writeRef = useRef<HTMLTextAreaElement>(null);
   const previewRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    return () => {
-      console.log(val.tempImg);
-    };
-  }, []);
-
   const handleScroll = (id: string) => {
     if (id === "write") {
       const scrollTop = writeRef.current!.scrollTop;

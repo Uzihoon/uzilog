@@ -8,6 +8,7 @@ export type PostState = {
   post: IPostBucket;
   edit: string | null;
   editInfo: IPost | null;
+  tempImg: Promise<string | undefined>[];
 };
 
 export interface IPostBucket {
@@ -33,4 +34,4 @@ export interface IPostInfo {
   body: IPost;
 }
 
-export type PostKey = "list" | "post" | "editInfo" | "edit";
+export type PostKey = "list" | "post" | "editInfo" | "edit" | "tempImg";

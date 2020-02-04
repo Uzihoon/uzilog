@@ -40,6 +40,10 @@ export default function usePostActions() {
     [dispatch]
   );
 
+  const onDeleteTemp = useCallback(() => dispatch(PostActions.deleteTemp()), [
+    dispatch
+  ]);
+
   return {
     onGetList,
     onDeletePost,
@@ -47,6 +51,7 @@ export default function usePostActions() {
     onCreatePost,
     onGetPost,
     onSetStore,
-    onSetEdit
+    onSetEdit,
+    onDeleteTemp
   };
 }

@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import styles from "./Write.module.scss";
 import classNames from "classnames/bind";
 import Logo from "components/Logo";
+import ConfirmModal from "components/ConfirmModal";
 
 import { useTagGet } from "hooks/lib";
 import { ITagList } from "store/redux/tag";
 import useStatusActions from "hooks/status/useStatusActions";
 import { useHistory } from "react-router";
+import usePostActions from "hooks/post/usePostActions";
 
 const cx = classNames.bind(styles);
 
@@ -37,9 +39,11 @@ interface IHeaderProps {
 
 function Header({ value, onChange, onPublish }: IHeaderProps) {
   const [current, setCurrent] = useState("title");
+  const [confirm, setConfirm] = useState(false);
   const tagList = useTagGet("tagList") as ITagList;
   const statusActions = useStatusActions();
   const history = useHistory();
+  const postActions = usePostActions();
 
   const handleClick = (id: string) => {
     setCurrent(id);
@@ -59,11 +63,20 @@ function Header({ value, onChange, onPublish }: IHeaderProps) {
     statusActions.onLogout(history);
   };
 
+  const onGoBack = () => {
+    setConfirm(true);
+  };
+
+  const onConfirm = () => {
+    postActions.onDeleteTemp();
+    history.push("/");
+  };
+
   return (
     <div className={cx("header-wrapper")}>
       <div className={cx("menu-box")}>
         <div className={cx("menu-wrapper")}>
-          <Logo />
+          <Logo disable={true} onClick={onGoBack} />
           {menu.map(m => (
             <div
               className={cx("menu", current === m.id && "select")}
@@ -122,6 +135,12 @@ function Header({ value, onChange, onPublish }: IHeaderProps) {
           </div>
         )}
       </div>
+      <ConfirmModal
+        visible={confirm}
+        onConfirm={onConfirm}
+        onCancel={() => setConfirm(false)}
+        content="Are you sure want to go back to main?"
+      />
     </div>
   );
 }

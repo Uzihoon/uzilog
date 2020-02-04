@@ -10,15 +10,14 @@ export default function useWrite() {
   const [title, setTitle] = useState<string>("");
   const [desc, setDesc] = useState<string | undefined>("");
   const [tag, setTag] = useState("javascript");
-  const [tempImg, setTempImg] = useState<string[]>([]);
   const postActions = usePostActions();
   const edit = usePostGet("edit") as string | null;
   const editInfo = usePostGet("editInfo") as IPost;
+  const tempImg = usePostGet("tempImg") as Promise<string | undefined>[];
 
   const handleUnmount = (ev: BeforeUnloadEvent) => {
     ev.returnValue = "Sure?";
-    console.log(tempImg);
-
+    postActions.onDeleteTemp();
     return "Sure?";
   };
 
@@ -38,10 +37,10 @@ export default function useWrite() {
 
   const handleImg = async (img: File | null) => {
     if (!img) return;
-    const src = await s3Upload(img);
+    const src: string = await s3Upload(img);
     const url = await Storage.vault.get(src);
     setContent(content + `![](${url})`);
-    setTempImg(tempImg.concat([src]));
+    return src;
   };
 
   const handleDrop = (event: React.DragEvent<HTMLTextAreaElement>) => {
@@ -51,7 +50,7 @@ export default function useWrite() {
     const images = [...fileList]
       .filter(file => file.type.indexOf("image") >= 0)
       .map(handleImg);
-    console.log(tempImg);
+    postActions.onSetStore({ key: "tempImg", value: tempImg.concat(images) });
   };
 
   useEffect(() => {
@@ -71,7 +70,7 @@ export default function useWrite() {
     setTitle("");
     setDesc("");
     setTag("javascript");
-    setTempImg([]);
+    postActions.onSetStore({ key: "tempImg", value: [] });
   };
 
   const handleHeader = (key: string, value: string) => {
@@ -115,10 +114,11 @@ export default function useWrite() {
       .filter(item => item.type.indexOf("image") >= 0)
       .map(img => img.getAsFile())
       .map(handleImg);
+
+    postActions.onSetStore({ key: "tempImg", value: tempImg.concat(images) });
   };
-  console.log(tempImg);
   return {
-    val: { content, desc, title, tag, tempImg },
+    val: { content, desc, title, tag },
     event: {
       handleChange,
       handleDrop,

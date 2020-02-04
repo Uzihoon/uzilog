@@ -3,6 +3,7 @@ import * as api from "api";
 import { IAction } from "./types";
 import { RootState } from "store/redux";
 import { IPost, IPostInfo, IPostBucket } from "store/redux/post";
+import { Storage } from "aws-amplify";
 
 import * as StatusActions from "store/redux/status";
 import * as PostActions from "store/redux/post";
@@ -101,4 +102,14 @@ export function* setEdit(action: IAction<string>) {
   } finally {
     yield put(StatusActions.setFinish());
   }
+}
+
+export function* deleteTemp() {
+  const postStore = yield select(getPostDataFromStore);
+  const tempImg = postStore.tempImg.concat() as Promise<string | undefined>[];
+
+  tempImg.map(async temp => {
+    const img: string = (await temp) || "";
+    const del = await Storage.vault.remove(img);
+  });
 }

@@ -7,15 +7,23 @@ const cx = classNames.bind(styles);
 
 interface IConfirmModalParams {
   visible: boolean;
+  content?: string;
   onCancel: () => void;
   onConfirm: () => void;
 }
 
-function ConfirmModal({ visible, onCancel, onConfirm }: IConfirmModalParams) {
+function ConfirmModal({
+  content,
+  visible,
+  onCancel,
+  onConfirm
+}: IConfirmModalParams) {
   return (
     <Modal visible={visible}>
       <div className={cx("confirm-wrapper")}>
-        <div className={cx("content")}>Are you sure want to delete ?</div>
+        <div className={cx("content")}>
+          {content || "Are you sure want to delete ?"}
+        </div>
         <div className={cx("footer")}>
           <span className={cx("button", "confirm")} onClick={onConfirm}>
             Confirm

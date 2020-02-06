@@ -38,8 +38,10 @@ export default function useWrite() {
   const handleImg = async (img: File | null) => {
     if (!img) return;
     const src: string = await s3Upload(img);
-    const url = await Storage.vault.get(src);
-    setContent(content + `![](${url})`);
+    const url = await Storage.get(src, { level: "public" });
+    // TODO: authenticator 설정 필요
+    const staticUrl = `https://uzilog-upload.s3.ap-northeast-2.amazonaws.com/private/ap-northeast-2%3Ab6c10628-1f45-492c-a9eb-f54020bc8014/${src}`;
+    setContent(content + `![](${staticUrl})`);
     return src;
   };
 

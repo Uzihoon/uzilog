@@ -22,18 +22,35 @@ function Post() {
   const param = useParams() as { id: string };
   const history = useHistory();
 
+  const getPost = (id: string) => {
+    if (!post[id]) {
+      postActions.onGetPost(id);
+    } else {
+      setTargetPost(post[id]);
+    }
+    goToTop();
+  };
+
+  const goToTop = () => window.scrollTo(0, 0);
+
   useEffect(() => {
     if (!param.id) {
       history.push("/");
       return;
     }
     const id = param.id;
+    getPost(id);
 
-    if (!post[id]) {
-      postActions.onGetPost(param.id);
-    } else {
-      setTargetPost(post[id]);
-    }
+    const unlisten = history.listen(location => {
+      const pathList = location.pathname.split("/").filter(path => path !== "");
+      if (pathList.length < 2) return;
+      const id = pathList[1];
+      getPost(id);
+    });
+
+    return () => {
+      unlisten();
+    };
   }, []);
 
   useEffect(() => {

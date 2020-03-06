@@ -194,3 +194,10 @@ input[type="radio"]:checked + .label {
   display: flex;
   align-items: center;
 }
+
+blockquote {
+  background-color: #efefef;
+  margin: 0px !important;
+  padding: 0.5em 40px;
+  color: #636363;
+}

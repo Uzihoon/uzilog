@@ -53,6 +53,13 @@
   }
 }
 
+blockquote {
+  background-color: #efefef;
+  margin: 0px !important;
+  padding: 0.5em 40px;
+  color: #636363;
+}
+
 @media screen and (max-width: 700px) {
   .post-wrapper {
     .content {

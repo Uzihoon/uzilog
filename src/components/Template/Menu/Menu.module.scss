@@ -1,0 +1,21 @@
+@import "styles/var.scss";
+
+.menu-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .icon {
+    opacity: 0.5;
+    transition: all 0.3s;
+
+    &:hover {
+      opacity: 1;
+    }
+    a {
+      height: 100%;
+      margin: 0 5px;
+      color: $mainColor;
+    }
+  }
+}

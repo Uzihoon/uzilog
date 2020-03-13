@@ -35,7 +35,7 @@ function Write() {
         onPublish={event.handlePublish}
       />
       <div className={cx("content")}>
-        <div className={cx("write")} onScroll={() => handleScroll("write")}>
+        <div className={cx("write")}>
           <textarea
             onChange={event.handleChange}
             ref={writeRef}
@@ -44,11 +44,7 @@ function Write() {
             onDrop={event.handleDrop}
           />
         </div>
-        <div
-          className={cx("preview")}
-          ref={previewRef}
-          onScroll={() => handleScroll("preview")}
-        >
+        <div className={cx("preview")} ref={previewRef}>
           <ReactMarkdown source={val.content} renderers={{ code: Code }} />
         </div>
       </div>

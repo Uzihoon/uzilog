@@ -3,9 +3,13 @@
 .post-wrapper {
   width: 100%;
 
-  p {
-    font-size: 15px;
+  p,
+  ul {
+    font-size: 16px;
+    line-height: 27px;
     color: #666;
+  }
+  p {
     code {
       font-family: "Noto Sans KR", sans-serif;
       background: #fff8cc;

@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
-import { Switch, Route, HashRouter, Redirect } from "react-router-dom";
+import {
+  Switch,
+  Route,
+  BrowserRouter as Router,
+  Redirect
+} from "react-router-dom";
 import { MainPage, PostPage, LoginPage, WritePage } from "pages";
 import Intro from "components/Intro";
 import PrivateRouter from "common/PrivateRouter";
@@ -19,7 +24,7 @@ function App() {
   }, []);
   return (
     <>
-      <HashRouter>
+      <Router>
         <Switch>
           <Route path="/" exact component={MainPage} />
           <Route path="/post/:id" component={PostPage} />
@@ -31,7 +36,7 @@ function App() {
           <Route path="/uzihoon/admin/login" component={LoginPage} />
           <Redirect to="/" />
         </Switch>
-      </HashRouter>
+      </Router>
       <Intro />
     </>
   );

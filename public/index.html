@@ -13,6 +13,10 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://uzihoon.com/" />
     <meta property="og:site_name" content="Uzihoon" />
+    <meta
+      name="google-site-verification"
+      content="17gWgex1ZadSSYTzUydPF_iPLyXEJzrrvAXyJXXxMlk"
+    />
     <!-- <meta name="title" content="UZILOG" /> -->
     <!-- <meta name="description" content="UZILOG" /> -->
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/uzihoon.png" />
@@ -30,6 +34,20 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-164940794-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-164940794-1");
+    </script>
     <title>UZILOG</title>
   </head>
   <body>

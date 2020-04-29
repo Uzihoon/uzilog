@@ -6,7 +6,7 @@
   p,
   ul {
     font-size: 16px;
-    line-height: 27px;
+    line-height: 29px;
     color: #666;
   }
   p {
@@ -41,6 +41,14 @@
       font-size: 3em;
       word-break: break-all;
     }
+
+    .post-desc {
+      margin: 7px 0 3px 0;
+      span {
+        color: #b8b8b8;
+        font-size: 1.1em;
+      }
+    }
   }
 
   .content {
@@ -49,10 +57,9 @@
     line-height: 1.5em;
     word-break: break-all;
     img {
-      width: 100%;
       display: block;
       margin: auto;
-      max-width: 700px;
+      max-width: 100%;
     }
   }
 }

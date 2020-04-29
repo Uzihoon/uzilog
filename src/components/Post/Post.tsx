@@ -74,6 +74,9 @@ function Post() {
         <div className={cx("post-title")}>
           <span>{targetPost.title}</span>
         </div>
+        <div className={cx("post-desc")}>
+          <span>{targetPost.desc}</span>
+        </div>
       </div>
       <div className={cx("content")}>
         <ReactMarkdown source={targetPost.content} renderers={{ code: Code }} />

@@ -19,7 +19,7 @@ function Intro() {
       setHidden(false);
       setLoading();
     } else {
-      setTimeout(() => setNone(true), 2300);
+      setTimeout(() => setNone(true), 800);
       setHidden(true);
     }
   }, [loading]);
@@ -31,9 +31,9 @@ function Intro() {
 
     const options = {
       strings: ["<div class='type'>UZILOG<span class='dot'/></div>"],
-      typeSpeed: 80,
+      typeSpeed: 30,
       backSpeed: 50,
-      backDelay: 50
+      backDelay: 0
     };
     typed = new Typed("#typho", options);
   };

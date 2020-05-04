@@ -6,6 +6,7 @@ import Code from "components/Code";
 import { useParams, useHistory } from "react-router";
 import moment from "moment";
 import Empty from "components/Empty";
+import MetaTags from "react-meta-tags";
 
 import { useTagGet, usePostGet } from "hooks/lib";
 import { ITagList } from "store/redux/tag";
@@ -62,6 +63,16 @@ function Post() {
 
   return (
     <div className={cx("post-wrapper")}>
+      <MetaTags>
+        <title>{`UZILOG - ${targetPost.title}`}</title>
+        <meta property="og:title" content={targetPost.title} />
+        <meta property="og:description" content={targetPost.desc} />
+        <meta name="description" content={targetPost.desc} />
+        <meta
+          property="og:url"
+          content={`https://uzihoon.com/post/${param.id}`}
+        />
+      </MetaTags>
       <div className={cx("header")}>
         <div className={cx("desc-box")}>
           <div className={cx("tag", targetPost.tag)}>

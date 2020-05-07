@@ -9,7 +9,7 @@ interface IMenuProps {}
 function Menu({}: IMenuProps) {
   return (
     <div className={cx("menu-wrapper")}>
-      <div className={cx("icon")}>
+      {/* <div className={cx("icon")}>
         <a href="https://github.com/Uzihoon" target="_blank">
           Github
         </a>
@@ -18,7 +18,7 @@ function Menu({}: IMenuProps) {
         <a href="https://daeunyoon.com" target="_blank">
           EUN
         </a>
-      </div>
+      </div> */}
     </div>
   );
 }

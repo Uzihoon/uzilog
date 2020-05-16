@@ -50,6 +50,9 @@ const initialState: TagState = {
     },
     shell: {
       text: "Shell"
+    },
+    book: {
+      text: "Book"
     }
   }
 };

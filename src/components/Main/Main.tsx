@@ -7,6 +7,7 @@ import moment from "moment";
 // Component
 import Empty from "components/Empty";
 import ConfirmModal from "components/ConfirmModal";
+import MetaTags from "react-meta-tags";
 
 // Reducer
 import { useTagGet, useStatusGet, usePostGet } from "hooks/lib";
@@ -64,6 +65,9 @@ function Main() {
   if (dataList.length <= 0) return <Empty />;
   return (
     <div className={cx("main-wrapper")}>
+      <MetaTags>
+        <title>UZILOG</title>
+      </MetaTags>
       {dataList
         .sort((a, b) => b.createdAt - a.createdAt)
         .map(t => (

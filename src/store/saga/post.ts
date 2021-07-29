@@ -113,12 +113,3 @@ export function* deleteTemp() {
     const del = await Storage.vault.remove(img);
   });
 }
-
-export function* getTags() {
-  try {
-    const tags = yield call(api.getTags);
-    console.log(tags);
-  } catch (error) {
-    console.error(error);
-  }
-}

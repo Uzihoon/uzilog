@@ -44,10 +44,6 @@ export default function usePostActions() {
     dispatch
   ]);
 
-  const onGetTags = useCallback(() => dispatch(PostActions.getTags()), [
-    dispatch
-  ]);
-
   return {
     onGetList,
     onDeletePost,
@@ -56,7 +52,6 @@ export default function usePostActions() {
     onGetPost,
     onSetStore,
     onSetEdit,
-    onDeleteTemp,
-    onGetTags
+    onDeleteTemp
   };
 }

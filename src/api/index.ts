@@ -1,5 +1,6 @@
 import { API, Auth } from 'aws-amplify';
 import { IPost } from 'store/redux/post';
+import { ITag } from 'store/redux/tag';
 
 const url = '/uzilog';
 const apiName = 'uzilog';
@@ -37,5 +38,9 @@ export async function signOut() {
 }
 
 export async function getTags() {
-  return await API.get(apiName, '/uzilog/tags', null);
+  return await API.get(apiName, '/tags', null);
+}
+
+export async function createTag(body: ITag) {
+  return await API.post(apiName, '/tags', { body });
 }

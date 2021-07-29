@@ -9,7 +9,6 @@ import Empty from 'components/Empty';
 import MetaTags from 'react-meta-tags';
 
 import { useTagGet, usePostGet } from 'hooks/lib';
-import { ITagList } from 'store/redux/tag';
 import usePostActions from 'hooks/post/usePostActions';
 import { IPostBucket, IPost } from 'store/redux/post';
 
@@ -75,8 +74,13 @@ function Post() {
       </MetaTags>
       <div className={cx('header')}>
         <div className={cx('desc-box')}>
-          <div className={cx('tag', targetPost.tag)}>
-            {tagList.find(tag => tag.tag === targetPost.tag)?.text}
+          <div
+            className={cx('tag', targetPost.tag)}
+            style={{
+              color: tagList.find(tag => tag.tagId === targetPost.tag)?.color
+            }}
+          >
+            {tagList.find(tag => tag.tagId === targetPost.tag)?.text}
           </div>
           <div className={cx('date')}>
             {moment(targetPost.createdAt).format('YYYY-MM-DD')}

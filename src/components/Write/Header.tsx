@@ -5,7 +5,6 @@ import Logo from 'components/Logo';
 import ConfirmModal from 'components/ConfirmModal';
 
 import { useTagGet } from 'hooks/lib';
-import { ITagList } from 'store/redux/tag';
 import useStatusActions from 'hooks/status/useStatusActions';
 import { useHistory } from 'react-router';
 import usePostActions from 'hooks/post/usePostActions';
@@ -119,17 +118,23 @@ function Header({ value, onChange, onPublish }: IHeaderProps) {
         {current === 'tag' && (
           <div className={cx('tag-box')}>
             {tagList.map(tag => (
-              <label htmlFor={tag.tag} className={cx('radio')} key={tag.tag}>
+              <label
+                htmlFor={tag.tagId}
+                className={cx('radio')}
+                key={tag.tagId}
+              >
                 <input
                   type='radio'
                   name='tag'
-                  id={tag.tag}
+                  id={tag.tagId}
                   onChange={handleRadio}
-                  checked={tag.tag === value.tag}
+                  checked={tag.tagId === value.tag}
                   className={cx('hidden')}
                 />
                 <span className={cx('label')} />
-                <span className={tag.tag}>{tag.text}</span>
+                <span className={tag.tagId} style={{ color: tag.color }}>
+                  {tag.text}
+                </span>
               </label>
             ))}
           </div>

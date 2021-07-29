@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Switch,
   Route,
@@ -10,10 +10,20 @@ import { MainPage, PostPage, LoginPage, WritePage, TagPage } from 'pages';
 import Intro from 'components/Intro';
 import PrivateRouter from 'common/PrivateRouter';
 import { useStatusGet } from 'hooks/lib';
+import useTagActions from 'hooks/tag/useTagActions';
+import useStatusActions from 'hooks/status/useStatusActions';
 
 function App() {
   const admin = useStatusGet('admin') as boolean;
   const history = useHistory();
+
+  const tagActions = useTagActions();
+  const statusActions = useStatusActions();
+
+  useEffect(() => {
+    tagActions.onGetTags();
+    statusActions.onCheckAdmin(history);
+  }, []);
 
   return (
     <>

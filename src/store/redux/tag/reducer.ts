@@ -1,28 +1,34 @@
 import { TagState, TagAction } from './types';
 import { createReducer } from 'typesafe-actions';
+import { SET_DATA } from './actions';
 
 const initialState: TagState = {
   tagList: [
-    { tag: 'javascript', text: 'Javascript', color: '' },
-    { tag: 'typescript', text: 'Typescript', color: '' },
-    { tag: 'react', text: 'React', color: '' },
-    { tag: 'kubernetes', text: 'Kubernetes', color: '' },
-    { tag: 'devops', text: 'DevOps', color: '' },
-    { tag: 'ansible', text: 'Ansible', color: '' },
-    { tag: 'progamming', text: 'Programming', color: '' },
-    { tag: 'etc', text: 'Etc', color: '' },
-    { tag: 'terraform', text: 'Terraform', color: '' },
-    { tag: 'aws', text: 'AWS', color: '' },
-    { tag: 'docker', text: 'Docker', color: '' },
-    { tag: 'linux', text: 'Linux', color: '' },
-    { tag: 'java', text: 'Java', color: '' },
-    { tag: 'kotlin', text: 'Kotlin', color: '' },
-    { tag: 'angular', text: 'Angular', color: '' },
-    { tag: 'shell', text: 'Shell', color: '' },
-    { tag: 'book', text: 'Book', color: '' }
+    { tagId: 'javascript', text: 'Javascript', color: '' },
+    { tagId: 'typescript', text: 'Typescript', color: '' },
+    { tagId: 'react', text: 'React', color: '' },
+    { tagId: 'kubernetes', text: 'Kubernetes', color: '' },
+    { tagId: 'devops', text: 'DevOps', color: '' },
+    { tagId: 'ansible', text: 'Ansible', color: '' },
+    { tagId: 'progamming', text: 'Programming', color: '' },
+    { tagId: 'etc', text: 'Etc', color: '' },
+    { tagId: 'terraform', text: 'Terraform', color: '' },
+    { tagId: 'aws', text: 'AWS', color: '' },
+    { tagId: 'docker', text: 'Docker', color: '' },
+    { tagId: 'linux', text: 'Linux', color: '' },
+    { tagId: 'java', text: 'Java', color: '' },
+    { tagId: 'kotlin', text: 'Kotlin', color: '' },
+    { tagId: 'angular', text: 'Angular', color: '' },
+    { tagId: 'shell', text: 'Shell', color: '' },
+    { tagId: 'book', text: 'Book', color: '' }
   ]
 };
 
-const status = createReducer<TagState, TagAction>(initialState, {});
+const status = createReducer<TagState, TagAction>(initialState, {
+  [SET_DATA]: (state, action) => {
+    const { key, value } = action.payload;
+    return { ...state, [key]: value };
+  }
+});
 
 export default status;

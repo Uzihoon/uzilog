@@ -31,8 +31,6 @@ function PrivateRoute({
     }
   };
 
-  console.log(getRedirectRoute());
-
   return (
     <Route
       {...rest}

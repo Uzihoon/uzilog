@@ -11,7 +11,6 @@ import MetaTags from 'react-meta-tags';
 
 // Reducer
 import { useTagGet, useStatusGet, usePostGet } from 'hooks/lib';
-import { ITagList } from 'store/redux/tag';
 import usePostActions from 'hooks/post/usePostActions';
 import { IPost } from 'store/redux/post';
 
@@ -74,8 +73,13 @@ function Main() {
           <Link to={`/post/${t.postId}`} className={cx('list')} key={t.postId}>
             <div className={cx('header')}>
               <div className={cx('tag')}>
-                <div className={cx('tag-title', t.tag)}>
-                  {tagList.find(tag => tag.tag === t.tag)?.text}
+                <div
+                  className={cx('tag-title')}
+                  style={{
+                    color: tagList.find(tag => tag.tagId === t.tag)?.color
+                  }}
+                >
+                  {tagList.find(tag => tag.tagId === t.tag)?.text}
                 </div>
                 {admin && (
                   <>

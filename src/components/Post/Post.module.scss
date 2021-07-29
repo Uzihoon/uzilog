@@ -1,4 +1,4 @@
-@import "styles/var.scss";
+@import 'styles/var.scss';
 
 .post-wrapper {
   width: 100%;
@@ -17,7 +17,7 @@
   }
   p {
     code {
-      font-family: "Noto Sans KR", sans-serif;
+      font-family: 'Noto Sans KR', sans-serif;
       background: #fff8cc;
       font-size: 0.85em;
       padding: 2px 5px;
@@ -90,5 +90,17 @@ blockquote {
     .content {
       padding: 0;
     }
+
+    .post-title {
+      font-size: 2em !important;
+    }
+
+    .post-desc {
+      font-size: 0.9em !important;
+    }
+  }
+
+  h1 {
+    line-height: 1.3em;
   }
 }

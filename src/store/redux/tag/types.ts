@@ -1,14 +1,16 @@
-import { ActionType } from "typesafe-actions";
-import * as actions from "./actions";
+import { ActionType } from 'typesafe-actions';
+import * as actions from './actions';
 
 export type TagAction = ActionType<typeof actions>;
 
 export type TagState = {
-  tagList: ITagList;
+  tagList: ITagList[];
 };
 
-export type TagKey = "tagList";
+export type TagKey = 'tagList';
 
 export interface ITagList {
-  [P: string]: { text: string };
+  tag: string;
+  text: string;
+  color: string;
 }

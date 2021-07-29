@@ -1,10 +1,10 @@
-import { all, takeLatest } from "redux-saga/effects";
+import { all, takeEvery, takeLatest } from 'redux-saga/effects';
 
-import * as StatusActions from "store/redux/status";
-import * as PostActions from "store/redux/post";
+import * as StatusActions from 'store/redux/status';
+import * as PostActions from 'store/redux/post';
 
-import * as StatusSaga from "./status";
-import * as PostSaga from "./post";
+import * as StatusSaga from './status';
+import * as PostSaga from './post';
 
 export default function* rootSaga() {
   yield all([handleStatus(), handlePost()]);
@@ -24,4 +24,5 @@ function* handlePost() {
   yield takeLatest(PostActions.updatePost, PostSaga.updatePost);
   yield takeLatest(PostActions.setEdit, PostSaga.setEdit);
   yield takeLatest(PostActions.deleteTemp, PostSaga.deleteTemp);
+  yield takeLatest(PostActions.getTags, PostSaga.getTags);
 }

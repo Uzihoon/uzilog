@@ -1,29 +1,29 @@
-import React, { useState } from "react";
-import styles from "./Write.module.scss";
-import classNames from "classnames/bind";
-import Logo from "components/Logo";
-import ConfirmModal from "components/ConfirmModal";
+import React, { useState } from 'react';
+import styles from './Write.module.scss';
+import classNames from 'classnames/bind';
+import Logo from 'components/Logo';
+import ConfirmModal from 'components/ConfirmModal';
 
-import { useTagGet } from "hooks/lib";
-import { ITagList } from "store/redux/tag";
-import useStatusActions from "hooks/status/useStatusActions";
-import { useHistory } from "react-router";
-import usePostActions from "hooks/post/usePostActions";
+import { useTagGet } from 'hooks/lib';
+import { ITagList } from 'store/redux/tag';
+import useStatusActions from 'hooks/status/useStatusActions';
+import { useHistory } from 'react-router';
+import usePostActions from 'hooks/post/usePostActions';
 
 const cx = classNames.bind(styles);
 
 const menu = [
   {
-    title: "Title",
-    id: "title"
+    title: 'Title',
+    id: 'title'
   },
   {
-    title: "Description",
-    id: "desc"
+    title: 'Description',
+    id: 'desc'
   },
   {
-    title: "Tags",
-    id: "tag"
+    title: 'Tags',
+    id: 'tag'
   }
 ];
 
@@ -38,9 +38,9 @@ interface IHeaderProps {
 }
 
 function Header({ value, onChange, onPublish }: IHeaderProps) {
-  const [current, setCurrent] = useState("title");
+  const [current, setCurrent] = useState('title');
   const [confirm, setConfirm] = useState(false);
-  const tagList = useTagGet("tagList") as ITagList;
+  const tagList = useTagGet('tagList');
   const statusActions = useStatusActions();
   const history = useHistory();
   const postActions = usePostActions();
@@ -56,7 +56,7 @@ function Header({ value, onChange, onPublish }: IHeaderProps) {
 
   const handleRadio = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.id;
-    onChange("tag", value);
+    onChange('tag', value);
   };
 
   const handleLogout = () => {
@@ -69,17 +69,17 @@ function Header({ value, onChange, onPublish }: IHeaderProps) {
 
   const onConfirm = () => {
     postActions.onDeleteTemp();
-    history.push("/");
+    history.push('/');
   };
 
   return (
-    <div className={cx("header-wrapper")}>
-      <div className={cx("menu-box")}>
-        <div className={cx("menu-wrapper")}>
+    <div className={cx('header-wrapper')}>
+      <div className={cx('menu-box')}>
+        <div className={cx('menu-wrapper')}>
           <Logo disable={true} onClick={onGoBack} />
           {menu.map(m => (
             <div
-              className={cx("menu", current === m.id && "select")}
+              className={cx('menu', current === m.id && 'select')}
               onClick={() => handleClick(m.id)}
               key={m.id}
             >
@@ -87,49 +87,49 @@ function Header({ value, onChange, onPublish }: IHeaderProps) {
             </div>
           ))}
         </div>
-        <div className={cx("button-box")}>
-          <div className={cx("publish-wrapper")} onClick={onPublish}>
-            <div className={cx("publish")}>Publish</div>
+        <div className={cx('button-box')}>
+          <div className={cx('publish-wrapper')} onClick={onPublish}>
+            <div className={cx('publish')}>Publish</div>
           </div>
-          <div className={cx("publish-wrapper")} onClick={handleLogout}>
-            <div className={cx("publish")}>Logout</div>
+          <div className={cx('publish-wrapper')} onClick={handleLogout}>
+            <div className={cx('publish')}>Logout</div>
           </div>
         </div>
       </div>
-      <div className={cx("content-box")}>
-        {current === "title" && (
-          <div className={cx("title-box")}>
+      <div className={cx('content-box')}>
+        {current === 'title' && (
+          <div className={cx('title-box')}>
             <input
-              placeholder="Title"
+              placeholder='Title'
               value={value.title}
-              name="title"
-              onChange={e => handleChange(e, "title")}
+              name='title'
+              onChange={e => handleChange(e, 'title')}
             />
           </div>
         )}
-        {current === "desc" && (
-          <div className={cx("title-box")}>
+        {current === 'desc' && (
+          <div className={cx('title-box')}>
             <textarea
               value={value.desc}
-              placeholder="Description"
-              onChange={e => handleChange(e, "desc")}
+              placeholder='Description'
+              onChange={e => handleChange(e, 'desc')}
             />
           </div>
         )}
-        {current === "tag" && (
-          <div className={cx("tag-box")}>
-            {Object.keys(tagList).map(tag => (
-              <label htmlFor={tag} className={cx("radio")} key={tag}>
+        {current === 'tag' && (
+          <div className={cx('tag-box')}>
+            {tagList.map(tag => (
+              <label htmlFor={tag.tag} className={cx('radio')} key={tag.tag}>
                 <input
-                  type="radio"
-                  name="tag"
-                  id={tag}
+                  type='radio'
+                  name='tag'
+                  id={tag.tag}
                   onChange={handleRadio}
-                  checked={tag === value.tag}
-                  className={cx("hidden")}
+                  checked={tag.tag === value.tag}
+                  className={cx('hidden')}
                 />
-                <span className={cx("label")} />
-                <span className={tag}>{tagList[tag].text}</span>
+                <span className={cx('label')} />
+                <span className={tag.tag}>{tag.text}</span>
               </label>
             ))}
           </div>
@@ -139,7 +139,7 @@ function Header({ value, onChange, onPublish }: IHeaderProps) {
         visible={confirm}
         onConfirm={onConfirm}
         onCancel={() => setConfirm(false)}
-        content="Are you sure want to go back to main?"
+        content='Are you sure want to go back to main?'
       />
     </div>
   );

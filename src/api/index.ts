@@ -1,8 +1,8 @@
-import { API, Auth } from "aws-amplify";
-import { IPost } from "store/redux/post";
+import { API, Auth } from 'aws-amplify';
+import { IPost } from 'store/redux/post';
 
-const url = "/uzilog";
-const apiName = "uzilog";
+const url = '/uzilog';
+const apiName = 'uzilog';
 
 export async function getList() {
   return await API.get(apiName, url, null);
@@ -34,4 +34,8 @@ export async function signIn(email: string, password: string) {
 
 export async function signOut() {
   return await Auth.signOut();
+}
+
+export async function getTags() {
+  return await API.get(apiName, '/uzilog/tags', null);
 }

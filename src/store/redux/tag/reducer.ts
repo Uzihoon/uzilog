@@ -1,60 +1,26 @@
-import { TagState, TagAction } from "./types";
-import { createReducer } from "typesafe-actions";
+import { TagState, TagAction } from './types';
+import { createReducer } from 'typesafe-actions';
 
 const initialState: TagState = {
-  tagList: {
-    javascript: {
-      text: "Javascript"
-    },
-    typescript: {
-      text: "Typescript"
-    },
-    react: {
-      text: "React"
-    },
-    kubernetes: {
-      text: "kubernetes"
-    },
-    devops: {
-      text: "DevOps"
-    },
-    ansible: {
-      text: "Ansible"
-    },
-    programming: {
-      text: "Programming"
-    },
-    etc: {
-      text: "Etc"
-    },
-    terraform: {
-      text: "Terraform"
-    },
-    aws: {
-      text: "AWS"
-    },
-    docker: {
-      text: "Docker"
-    },
-    linux: {
-      text: "linux"
-    },
-    java: {
-      text: "Java"
-    },
-    kotlin: {
-      text: "Kotlin"
-    },
-    angular: {
-      text: "Angular"
-    },
-    shell: {
-      text: "Shell"
-    },
-    book: {
-      text: "Book"
-    }
-  }
+  tagList: [
+    { tag: 'javascript', text: 'Javascript', color: '' },
+    { tag: 'typescript', text: 'Typescript', color: '' },
+    { tag: 'react', text: 'React', color: '' },
+    { tag: 'kubernetes', text: 'Kubernetes', color: '' },
+    { tag: 'devops', text: 'DevOps', color: '' },
+    { tag: 'ansible', text: 'Ansible', color: '' },
+    { tag: 'progamming', text: 'Programming', color: '' },
+    { tag: 'etc', text: 'Etc', color: '' },
+    { tag: 'terraform', text: 'Terraform', color: '' },
+    { tag: 'aws', text: 'AWS', color: '' },
+    { tag: 'docker', text: 'Docker', color: '' },
+    { tag: 'linux', text: 'Linux', color: '' },
+    { tag: 'java', text: 'Java', color: '' },
+    { tag: 'kotlin', text: 'Kotlin', color: '' },
+    { tag: 'angular', text: 'Angular', color: '' },
+    { tag: 'shell', text: 'Shell', color: '' },
+    { tag: 'book', text: 'Book', color: '' }
+  ]
 };
 
 const status = createReducer<TagState, TagAction>(initialState, {});

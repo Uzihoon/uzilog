@@ -1,12 +1,12 @@
-import { put, all, call, select } from "redux-saga/effects";
-import * as api from "api";
-import { IAction } from "./types";
-import { RootState } from "store/redux";
-import { IPost, IPostInfo, IPostBucket } from "store/redux/post";
-import { Storage } from "aws-amplify";
+import { put, all, call, select } from 'redux-saga/effects';
+import * as api from 'api';
+import { IAction } from './types';
+import { RootState } from 'store/redux';
+import { IPost, IPostInfo, IPostBucket } from 'store/redux/post';
+import { Storage } from 'aws-amplify';
 
-import * as StatusActions from "store/redux/status";
-import * as PostActions from "store/redux/post";
+import * as StatusActions from 'store/redux/status';
+import * as PostActions from 'store/redux/post';
 
 const getPostDataFromStore = (state: RootState) => state.post;
 
@@ -15,7 +15,7 @@ export function* createPost(action: IAction<IPost>) {
     const { payload: body } = action;
     yield call(api.createPost, body);
     // TODO: Set notification
-    alert("Post successfully");
+    alert('Post successfully');
   } catch (error) {
     console.error(error);
   }
@@ -26,7 +26,7 @@ export function* deletePost(action: IAction<string>) {
     const { payload: postId } = action;
     yield call(api.deletePost, postId);
     // TODO: Set notification
-    alert("Delete successfully");
+    alert('Delete successfully');
   } catch (error) {
     console.error(error);
   }
@@ -37,10 +37,10 @@ export function* updatePost(action: IAction<IPostInfo>) {
     const { postId, body } = action.payload;
     yield call(api.updatePost, postId, body);
     //TODO: set notification
-    alert("Update Successfully");
+    alert('Update Successfully');
     yield all([
-      put(PostActions.setStore({ key: "edit", value: null })),
-      put(PostActions.setStore({ key: "editInfo", value: null }))
+      put(PostActions.setStore({ key: 'edit', value: null })),
+      put(PostActions.setStore({ key: 'editInfo', value: null }))
     ]);
   } catch (error) {
     console.error(error);
@@ -60,7 +60,7 @@ export function* getPost(action: IAction<string>) {
 
     yield put(
       PostActions.setStore({
-        key: "post",
+        key: 'post',
         value: { ...postBucket, [postId]: post }
       })
     );
@@ -75,7 +75,7 @@ export function* getList() {
   try {
     yield put(StatusActions.setPending());
     const data = yield call(api.getList);
-    yield put(PostActions.setStore({ key: "list", value: data }));
+    yield put(PostActions.setStore({ key: 'list', value: data }));
   } catch (error) {
     console.error(error);
   } finally {
@@ -94,8 +94,8 @@ export function* setEdit(action: IAction<string>) {
 
     if (!editInfo) editInfo = yield call(api.getPost, postId);
     yield all([
-      put(PostActions.setStore({ key: "edit", value: postId })),
-      put(PostActions.setStore({ key: "editInfo", value: editInfo }))
+      put(PostActions.setStore({ key: 'edit', value: postId })),
+      put(PostActions.setStore({ key: 'editInfo', value: editInfo }))
     ]);
   } catch (error) {
     console.error(error);
@@ -109,7 +109,16 @@ export function* deleteTemp() {
   const tempImg = postStore.tempImg.concat() as Promise<string | undefined>[];
 
   tempImg.map(async temp => {
-    const img: string = (await temp) || "";
+    const img: string = (await temp) || '';
     const del = await Storage.vault.remove(img);
   });
+}
+
+export function* getTags() {
+  try {
+    const tags = yield call(api.getTags);
+    console.log(tags);
+  } catch (error) {
+    console.error(error);
+  }
 }

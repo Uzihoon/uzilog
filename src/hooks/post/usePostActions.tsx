@@ -1,7 +1,7 @@
-import { useDispatch } from "react-redux";
-import { useCallback } from "react";
-import * as PostActions from "store/redux/post";
-import { IPostInfo, IPost, ISetStore } from "store/redux/post";
+import { useDispatch } from 'react-redux';
+import { useCallback } from 'react';
+import * as PostActions from 'store/redux/post';
+import { IPostInfo, IPost, ISetStore } from 'store/redux/post';
 
 export default function usePostActions() {
   const dispatch = useDispatch();
@@ -44,6 +44,10 @@ export default function usePostActions() {
     dispatch
   ]);
 
+  const onGetTags = useCallback(() => dispatch(PostActions.getTags()), [
+    dispatch
+  ]);
+
   return {
     onGetList,
     onDeletePost,
@@ -52,6 +56,7 @@ export default function usePostActions() {
     onGetPost,
     onSetStore,
     onSetEdit,
-    onDeleteTemp
+    onDeleteTemp,
+    onGetTags
   };
 }

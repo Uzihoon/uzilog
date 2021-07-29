@@ -1,6 +1,6 @@
-import { PostState, PostAction } from "./types";
-import { createReducer } from "typesafe-actions";
-import { SET_STORE } from "./actions";
+import { PostState, PostAction } from './types';
+import { createReducer } from 'typesafe-actions';
+import { SET_STORE } from './actions';
 
 const initialState: PostState = {
   list: [],

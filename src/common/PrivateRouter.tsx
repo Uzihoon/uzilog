@@ -1,33 +1,48 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import React from 'react';
+import { Route, Redirect, useHistory } from 'react-router-dom';
 
 interface IPrivateRouteProps {
   component: React.FC<any>;
   authed: boolean;
   adminCheck?: boolean;
-  location?: string;
-  path?: string;
+  path: string;
   exact?: boolean;
+  loginPage?: boolean;
+  loc?: string;
 }
 
 function PrivateRoute({
   component: Component,
   authed,
   adminCheck,
-  location,
+  path,
+  loc,
+  loginPage,
   ...rest
 }: IPrivateRouteProps) {
-  const redirectRoute = adminCheck ? "/" : "/uzihoon/admin/login";
+  const getRedirectRoute = () => {
+    if (loginPage) {
+      if (authed) {
+        return loc || '/uzihoon/admin/write';
+      }
+      return loc || '/uzihoon/admin/write';
+    } else {
+      return '/uzihoon/admin/login';
+    }
+  };
+
+  console.log(getRedirectRoute());
 
   return (
     <Route
       {...rest}
+      path={path}
       render={props =>
         authed ? (
           <Component {...props} />
         ) : (
           <Redirect
-            to={{ pathname: redirectRoute, state: { from: location } }}
+            to={{ pathname: getRedirectRoute(), state: { from: path } }}
           />
         )
       }

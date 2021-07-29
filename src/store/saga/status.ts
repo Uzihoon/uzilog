@@ -1,17 +1,17 @@
-import { call, put } from "redux-saga/effects";
-import { IAction } from "./types";
-import * as StatusActions from "store/redux/status";
-import { ILoginParam } from "store/redux/status";
-import * as api from "api";
+import { call, put } from 'redux-saga/effects';
+import { IAction } from './types';
+import * as StatusActions from 'store/redux/status';
+import { ILoginParam } from 'store/redux/status';
+import * as api from 'api';
 
 export function* checkAdmin(action: IAction<any>) {
   const { payload: history } = action;
   try {
     const data = yield call(api.checkSession);
-    yield put(StatusActions.setStatus({ key: "admin", value: true }));
-    history.push(history.location.pathname);
+    yield put(StatusActions.setStatus({ key: 'admin', value: true }));
+    // history.push(history.location.pathname);
   } catch (error) {
-    yield put(StatusActions.setStatus({ key: "admin", value: false }));
+    yield put(StatusActions.setStatus({ key: 'admin', value: false }));
   } finally {
     yield put(StatusActions.setFinish());
   }
@@ -21,7 +21,7 @@ export function* logout(action: IAction<any>) {
   try {
     const { payload: history } = action;
     yield call(api.signOut);
-    history.push("/");
+    history.push('/');
   } catch (error) {
     console.error(error);
   }
@@ -31,7 +31,7 @@ export function* login(action: IAction<ILoginParam>) {
   try {
     const { email, password } = action.payload;
     yield call(api.signIn, email, password);
-    yield put(StatusActions.setStatus({ key: "admin", value: true }));
+    yield put(StatusActions.setStatus({ key: 'admin', value: true }));
   } catch (error) {
     console.error(error);
   }

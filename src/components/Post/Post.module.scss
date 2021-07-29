@@ -98,13 +98,12 @@ blockquote {
     .post-desc {
       font-size: 0.9em !important;
     }
-  }
+    h1 {
+      line-height: 1.5em;
+    }
 
-  h1 {
-    line-height: 1.5em;
-  }
-
-  img {
-    max-width: 70% !important;
+    img {
+      max-width: 70% !important;
+    }
   }
 }

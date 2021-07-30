@@ -6,7 +6,14 @@ import {
   Redirect,
   useHistory
 } from 'react-router-dom';
-import { MainPage, PostPage, LoginPage, WritePage, TagPage } from 'pages';
+import {
+  MainPage,
+  PostPage,
+  LoginPage,
+  WritePage,
+  TagPage,
+  PortfolioPage
+} from 'pages';
 import Intro from 'components/Intro';
 import PrivateRouter from 'common/PrivateRouter';
 import { useStatusGet } from 'hooks/lib';
@@ -31,6 +38,7 @@ function App() {
         <Switch>
           <Route path='/' exact component={MainPage} />
           <Route path='/post/:id' component={PostPage} />
+          <Route path='/about' component={PortfolioPage} />
           authed
           <PrivateRouter
             path='/uzihoon/admin/write'

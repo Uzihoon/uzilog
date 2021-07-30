@@ -1,0 +1,160 @@
+@import '../../styles/var.scss';
+
+.wrapper {
+  width: 100%;
+  max-width: 600px;
+  font-family: 'Assistant', sans-serif;
+
+  margin: auto;
+  padding: 50px 0;
+
+  .title-box {
+    width: 300px;
+    margin: auto;
+  }
+
+  .photo {
+    width: 300px;
+    margin: 60px auto 20px auto;
+    position: relative;
+
+    .point {
+      width: 200px;
+      height: 200px;
+      background-color: $mainColor;
+      position: absolute;
+      right: -40px;
+      top: -50px;
+      z-index: -1;
+      border-radius: 50%;
+    }
+
+    .line {
+      width: 350px;
+      height: 10px;
+      background-color: #d3d3d3;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      margin-left: -175px;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    div {
+      font-size: 5em;
+      font-weight: bold;
+    }
+  }
+
+  .info {
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  .name {
+    font-size: 2em;
+    text-decoration: underline;
+    text-decoration-color: $mainColor;
+  }
+
+  .sub {
+    margin-top: 20px;
+    font-size: 1.5em;
+  }
+
+  .desc {
+    margin-top: 30px;
+    .desc-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2em;
+      margin-bottom: 8px;
+
+      .desc-title {
+        width: 100px;
+        margin-right: 10px;
+        text-align: left;
+      }
+
+      .desc-value {
+        width: 150px;
+        text-align: left;
+
+        a {
+          color: #917e00;
+
+          &:hover {
+            color: #917e00;
+          }
+        }
+      }
+    }
+  }
+
+  .section {
+    margin: 100px 0;
+
+    .section-title {
+      font-size: 3em;
+      margin-bottom: 30px;
+
+      text-align: center;
+    }
+
+    .section-content {
+      .section-item {
+        margin-bottom: 20px;
+        font-size: 1.3em;
+
+        &.mb-2 {
+          margin-bottom: 50px;
+        }
+        div {
+          margin: 5px 0;
+        }
+      }
+    }
+  }
+
+  .section-desc-box {
+    margin-top: 20px !important;
+  }
+  .section-desc {
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+
+    .section-desc-title {
+      width: 70px;
+      margin-right: 5px;
+    }
+
+    a {
+      color: #222;
+      text-decoration: underline;
+      &:hover {
+        color: #222;
+      }
+    }
+  }
+}
+
+.flag-box {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  img {
+    width: 250px;
+  }
+}

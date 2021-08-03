@@ -158,3 +158,16 @@
     width: 250px;
   }
 }
+
+@media screen and (max-width: 700px) {
+  .wrapper {
+    padding: 0 30px;
+  }
+  .flag-box {
+    flex-wrap: wrap;
+    img {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+}

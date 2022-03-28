@@ -104,9 +104,30 @@
 
     .section-title {
       font-size: 2.5em;
-      margin-bottom: 30px;
-
+      margin-bottom: 50px;
+      // color: $mainColor;
+      font-weight: bold;
       text-align: center;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      div {
+        position: relative;
+        color: #373737;
+        &::after {
+          content: '';
+          display: block;
+          width: 70%;
+          max-width: 100px;
+          height: 15px;
+          background-color: $mainColor;
+          position: absolute;
+          right: -15px;
+          bottom: 2px;
+          z-index: -1;
+        }
+      }
     }
 
     .section-content {
@@ -141,7 +162,7 @@
           opacity: 0.6;
           font-style: italic;
           margin-bottom: 15px;
-          font-size: 0.9em;
+          font-size: 0.95em;
         }
 
         b {

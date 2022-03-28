@@ -266,7 +266,9 @@ function Portfolio() {
         </div>
       </div>
       <div className={cx('section')}>
-        <div className={cx('section-title')}>Education</div>
+        <div className={cx('section-title')}>
+          <div>Education</div>
+        </div>
         <div className={cx('section-content')}>
           {educationList.map(education => (
             <div className={cx('section-item')} key={education.title}>
@@ -289,7 +291,9 @@ function Portfolio() {
         </div>
       </div>
       <div className={cx('section')}>
-        <div className={cx('section-title')}>Skills</div>
+        <div className={cx('section-title')}>
+          <div>Skills</div>
+        </div>
         <div className={cx('section-content')}>
           {skills.map(skill => (
             <div className={cx('section-item')} key={skill.title}>
@@ -300,7 +304,9 @@ function Portfolio() {
         </div>
       </div>
       <div className={cx('section')}>
-        <div className={cx('section-title')}>Work Experience</div>
+        <div className={cx('section-title')}>
+          <div>Work Experience</div>
+        </div>
         <div className={cx('section-content')}>
           {workList.map(work => (
             <div className={cx('section-item')} key={work.title}>
@@ -324,7 +330,9 @@ function Portfolio() {
         </div>
       </div>
       <div className={cx('section')}>
-        <div className={cx('section-title')}>Project</div>
+        <div className={cx('section-title')}>
+          <div>Project</div>
+        </div>
         <div className={cx('section-content')}>
           {projectList.map(project => (
             <div className={cx('section-item', 'mb-2')} key={project.title}>

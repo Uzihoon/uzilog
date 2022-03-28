@@ -62,8 +62,6 @@
 
   .name {
     font-size: 2em;
-    text-decoration: underline;
-    text-decoration-color: $mainColor;
   }
 
   .sub {
@@ -105,16 +103,50 @@
     margin: 100px 0;
 
     .section-title {
-      font-size: 3em;
+      font-size: 2.5em;
       margin-bottom: 30px;
 
       text-align: center;
     }
 
     .section-content {
+      ul {
+        margin-top: 0;
+        padding-left: 20px;
+        li {
+          margin-bottom: 5px;
+        }
+      }
       .section-item {
         margin-bottom: 20px;
         font-size: 1.3em;
+
+        .section-main-title {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin: 0 !important;
+          .date {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            opacity: 0.7;
+            div {
+              margin: 0 !important;
+            }
+          }
+        }
+
+        .section-sub-title {
+          opacity: 0.6;
+          font-style: italic;
+          margin-bottom: 15px;
+          font-size: 0.9em;
+        }
+
+        b {
+          font-size: 1.1em;
+        }
 
         &.mb-2 {
           margin-bottom: 50px;
@@ -137,6 +169,11 @@
     .section-desc-title {
       width: 70px;
       margin-right: 5px;
+      font-size: 0.9em;
+    }
+
+    .section-desc-value {
+      font-size: 0.9em;
     }
 
     a {

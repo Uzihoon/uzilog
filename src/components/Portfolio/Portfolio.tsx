@@ -13,32 +13,233 @@ import Flag8 from 'assets/flag/8.jpg';
 
 const cx = classNames.bind(styles);
 
+interface Project {
+  title: string;
+  subTitle: string;
+  desc: string[];
+  skill: string[];
+  url?: string;
+  github?: string;
+}
+
+const projectList: Project[] = [
+  {
+    title: 'Samsing Control Tower',
+    subTitle: 'Samsung admin web application',
+    desc: [
+      'Built up management service for Samsung admin',
+      'Improved management system performance and user interface',
+      'Developed web application for dashboard and statistics using React for front-end development and Kotlin for back-end development'
+    ],
+    skill: ['React', 'Recoil']
+  },
+  {
+    title: 'Customer Portal',
+    subTitle: 'Samsung customer web-app application',
+    desc: [],
+    skill: ['Angular'],
+    url: 'https://samsungcso.com'
+  },
+  {
+    title: 'HRM Web',
+    subTitle: 'Robot management web application for Hyundai Robotics',
+    desc: [],
+    skill: ['React', 'Redux', 'Redux-Saga', 'Typescript', 'Electron']
+  },
+  {
+    title: 'Heybunny',
+    subTitle: 'News subscription web-app application',
+    desc: [],
+    skill: ['Next.js', 'Redux', 'Redux-saga'],
+    url: 'https://www.heybunny.io/'
+  },
+  {
+    title: 'Gcon Studio',
+    subTitle: 'Translation web services based on AI',
+    desc: [],
+    skill: ['Next.js', 'Redux', 'Redux-saga']
+  },
+
+  {
+    title: 'NexClipper',
+    subTitle: 'Kubernetes management web application',
+    desc: [],
+    skill: ['React', 'Redux', 'Redux-saga'],
+    url: 'https://console.nexclipper.io'
+  },
+  {
+    title: 'GeoKo',
+    subTitle: 'Geolocation code conversion library',
+    desc: [
+      'Developed open source library for converting geolocation code such as GEO, TM, KATEC, GRS80, UTMK',
+      'Developed source code using Typescript and deployed to NPM',
+      'Developed demo website using Tree.js for 3D computer graphics'
+    ],
+    skill: ['Typescript', 'NPM'],
+    github: 'https://github.com/Uzihoon/Geoko',
+    url: 'https://uzihoon.github.io/GeoKo'
+  },
+  {
+    title: 'BoBalGGun',
+    subTitle: 'Subway congestion analysis mobile application',
+    desc: [
+      'Developed average congestion level by time period using 2015 subway congestion level provided by Seoul Metro',
+      'Designed interactive UI for analysis of traffic congestion',
+      'Developed cross platform application for analyzing subway congestion using React Native'
+    ],
+    skill: ['React Native'],
+    github: 'https://github.com/Uzihoon/BoBalGGun'
+  },
+  {
+    title: 'EUN',
+    subTitle: 'CRISPR/CAS analysis web application',
+    desc: [
+      'Developed CRISPR/CAS analysis web application with efficiency',
+      'Used web worker to improve analysis performance and to analyze one or more sequencing data',
+      'Provided analysis data in Excel, JSON, and Line Chart image files'
+    ],
+    skill: [
+      'React',
+      'Redux',
+      'Redux-Saga',
+      'Typescript',
+      'Cognito',
+      'CloudFront'
+    ],
+    url: 'https://daeunyoon.com',
+    github: 'https://github.com/Uzihoon/eun'
+  },
+
+  {
+    title: 'TunA',
+    subTitle: 'Application Performance Management web application',
+    desc: [
+      'Improved legacy source code developed with Angular.js using React',
+      'Built up real-time visualize monitoring and statistics web service',
+      'Developed web application that tracks web application server and Kubernetes'
+    ],
+    skill: ['React', 'Redux', 'Redux-Saga', 'Typescript', 'Chart.js'],
+    url: 'https://www.lgcns.co.kr/Solution/TunA'
+  },
+  {
+    title: 'Fanddle',
+    subTitle: 'Funding service web-app application for entertainers',
+    desc: [],
+    skill: ['HTML', 'CSS', 'Javascript', 'Webpack', 'Babel'],
+    github: 'https://github.com/Uzihoon/fanddle'
+  }
+];
+
+const skills = [
+  {
+    title: 'Programming Language',
+    skills: [
+      'Javascript(ES6+)',
+      'HTML',
+      'CSS(SASS)',
+      'Typescript',
+      'Python',
+      'Java',
+      'C++'
+    ]
+  },
+  {
+    title: 'Framework / Library',
+    skills: [
+      'React',
+      'Angular',
+      'Redux',
+      'Redux-Saga',
+      'Webpack',
+      'Babel',
+      'Electron',
+      'Recoil'
+    ]
+  },
+  {
+    title: 'Tooling / DevOps',
+    skills: ['Docker', 'Git', 'Terraform']
+  },
+  {
+    title: 'Environment',
+    skills: ['AWS', 'Linux']
+  },
+  {
+    title: 'Etc',
+    skills: ['Photoshop', 'Illustration']
+  }
+];
+
+const educationList = [
+  {
+    title: 'Korea National Open University',
+    date: 'Mar. 2020 - Feb. 2020',
+    location: 'Seoul, Korea',
+    desc: [
+      'Bachelor of Science in Computer Science',
+      'Total GPA of 4.3 / 4.5 (97.0 / 100)'
+    ]
+  },
+  {
+    title: 'Yonam Institute of Technology',
+    date: 'Mar. 2013 - Feb. 2015',
+    location: 'Chinju, Korea',
+    desc: [
+      'Associate Degree of Arts in Industrial Design',
+      'Total GPA of 3.64 / 4.5 (90.17 / 100)'
+    ]
+  }
+];
+
+const workList = [
+  {
+    title: 'DKRabbit',
+    location: 'California, USA',
+    date: 'Aug. 2020 – Apr. 2022',
+    subTitle: 'Front-End Developer, Contract Full-time',
+    desc: [
+      'Built up front-end environment using Angular and React',
+      'Optimized existing source code performance and developed new functions',
+      'Developed web application for Samsung Electronics America admin services'
+    ]
+  },
+  {
+    title: 'LG CNS',
+    location: 'Seoul, Korea',
+    date: 'Jan. 2019 – July 2020',
+    subTitle: 'Front-End Developer, Contract Full-time',
+    desc: [
+      'Redesigned existing project developed with Angular.js by using React',
+      'Developed visualization charts and animation UI for real-time monitoring using JavaScript',
+      'Developed web application for Application Performance Management (APM)'
+    ]
+  },
+  {
+    title: 'NSMG',
+    location: 'Seoul, Korea',
+    date: 'Nov. 2017 – Dec. 2019',
+    subTitle: 'Front-End Developer, Full-time',
+    desc: [
+      'Built up design system and overall front-end environment',
+      'Developed marketing analysis web services using JavaScript',
+      'Developed collaborative tool for in-house using JavaScript and PHP'
+    ]
+  }
+];
+
 function Portfolio() {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('title-box')}>
-        <div className={cx('title')}>
-          <div>P</div>
-          <div>O</div>
-          <div>R</div>
-          <div>T</div>
-        </div>
         <div className={cx('photo')}>
           <div className={cx('point')} />
           <img src={ProfilePhoto} />
           <div className={cx('line')} />
         </div>
-        <div className={cx('title')}>
-          <div>F</div>
-          <div>O</div>
-          <div>L</div>
-          <div>I</div>
-          <div>O</div>
-        </div>
       </div>
       <div className={cx('info')}>
         <div className={cx('name')}>Jiwoo Hong</div>
-        <div className={cx('sub')}>I am Front-End developer</div>
+        {/* <div className={cx('sub')}>Front-End developer</div> */}
         <div className={cx('desc')}>
           <div className={cx('desc-item')}>
             <div className={cx('desc-title')}>Email</div>
@@ -67,257 +268,107 @@ function Portfolio() {
       <div className={cx('section')}>
         <div className={cx('section-title')}>Education</div>
         <div className={cx('section-content')}>
-          <div className={cx('section-item')}>
-            <b>Korea National Open University</b>, Seoul, Republic of Korea
-            (2022)
-            <div>Bachelor of Science in Computer Science and Engineering</div>
-          </div>
+          {educationList.map(education => (
+            <div className={cx('section-item')} key={education.title}>
+              <div className={cx('section-main-title')}>
+                <div>
+                  <b>{education.title}</b>
+                </div>
+                <div className={cx('date')}>
+                  <div>{education.date}</div>
+                  <div>{education.location}</div>
+                </div>
+              </div>
+              <ul>
+                {education.desc.map((desc, i) => (
+                  <li key={i}>{desc}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
       <div className={cx('section')}>
         <div className={cx('section-title')}>Skills</div>
         <div className={cx('section-content')}>
-          <div className={cx('section-item')}>
-            <b>Programming Language</b>
-            <div>Javascript(ES6+), HTML, CSS3(SASS), Typescript, Python</div>
-          </div>
-          <div className={cx('section-item')}>
-            <b>Framework / Library</b>
-            <div>
-              React, Angular, Redux, Redux-Saga, Webpack, Babel, Electron,
-              Recoil
+          {skills.map(skill => (
+            <div className={cx('section-item')} key={skill.title}>
+              <b>{skill.title}</b>
+              <div>{skill.skills.join(', ')}</div>
             </div>
-          </div>
-          <div className={cx('section-item')}>
-            <b>Tooling / DevOps</b>
-            <div>Docker, Github, Bitbucket, Terraform, Slack</div>
-          </div>
-          <div className={cx('section-item')}>
-            <b>Environment</b>
-            <div>AWS, Linux</div>
-          </div>
-          <div className={cx('section-item')}>
-            <b>Etc</b>
-            <div>Photoshop, Illustration</div>
-          </div>
+          ))}
         </div>
       </div>
       <div className={cx('section')}>
-        <div className={cx('section-title')}>Carrer</div>
+        <div className={cx('section-title')}>Work Experience</div>
         <div className={cx('section-content')}>
-          <div className={cx('section-item')}>
-            <b>DKRabbit</b>, CA, United States (2020 - )
-            <div>Front-End Developer, Freelancer</div>
-          </div>
-          <div className={cx('section-item')}>
-            <b>LG CNS</b>, Seoul, Republic of Korea (2018 - 2020)
-            <div>Front-End Developer, Freelancer</div>
-          </div>
-          <div className={cx('section-item')}>
-            <b>NSMG</b>, Seoul, Republic of Korea (2017 - 2018)
-            <div>Front-End Developer</div>
-          </div>
+          {workList.map(work => (
+            <div className={cx('section-item')} key={work.title}>
+              <div className={cx('section-main-title')}>
+                <div>
+                  <b>{work.title}</b>
+                  <div className={cx('section-sub-title')}>{work.subTitle}</div>
+                </div>
+                <div className={cx('date')}>
+                  <div>{work.date}</div>
+                  <div>{work.location}</div>
+                </div>
+              </div>
+              <ul>
+                {work.desc.map((desc, i) => (
+                  <li key={i}>{desc}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
       <div className={cx('section')}>
         <div className={cx('section-title')}>Project</div>
         <div className={cx('section-content')}>
-          <div className={cx('section-item', 'mb-2')}>
-            <b>Customer Portal</b>, Request a refund for your Samsung product.
-            Samsung (2020 - 2021)
-            <div>
-              Customer Portal is intended to request a refund for your Samsung
-              product.
-            </div>
-            <div className={cx('section-desc-box')}>
-              <div className={cx('section-desc')}>
-                <div className={cx('section-desc-title')}>Skill</div>
-                <div className={cx('section-desc-value')}>Angular</div>
+          {projectList.map(project => (
+            <div className={cx('section-item', 'mb-2')} key={project.title}>
+              <b>{project.title}</b>
+              <div className={cx('section-sub-title')}>{project.subTitle}</div>
+              <div>
+                <ul>
+                  {project.desc.map((desc, i) => (
+                    <li key={i}>{desc}</li>
+                  ))}
+                </ul>
               </div>
-              <div className={cx('section-desc')}>
-                <div className={cx('section-desc-title')}>URL</div>
-                <div className={cx('section-desc-value')}>
-                  <a href='https://samsungcso.com/' target='_blank'>
-                    https://samsungcso.com
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className={cx('section-item', 'mb-2')}>
-            <b>GeoKo</b>, Converting Korea geolocation code. (2020)
-            <div>
-              GecKo is the open source library that's converting Korea
-              geolocation code.
-            </div>
-            <div className={cx('section-desc-box')}>
-              <div className={cx('section-desc')}>
-                <div className={cx('section-desc-title')}>Skill</div>
-                <div className={cx('section-desc-value')}>Typescript</div>
-              </div>
-              <div className={cx('section-desc')}>
-                <div className={cx('section-desc-title')}>Github</div>
-                <div className={cx('section-desc-value')}>
-                  <a href='https://github.com/Uzihoon/Geoko' target='_blank'>
-                    https://github.com/Uzihoon/Geoko
-                  </a>
-                </div>
-              </div>
-              <div className={cx('section-desc')}>
-                <div className={cx('section-desc-title')}>URL</div>
-                <div className={cx('section-desc-value')}>
-                  <a href='https://uzihoon.github.io/GeoKo' target='_blank'>
-                    https://uzihoon.github.io/GeoKo
-                  </a>
-                </div>
+              <div className={cx('section-desc-box')}>
+                {project.skill && (
+                  <div className={cx('section-desc')}>
+                    <div className={cx('section-desc-title')}>Skill</div>
+                    <div className={cx('section-desc-value')}>
+                      {project.skill.join(', ')}
+                    </div>
+                  </div>
+                )}
+                {project.github && (
+                  <div className={cx('section-desc')}>
+                    <div className={cx('section-desc-title')}>Github</div>
+                    <div className={cx('section-desc-value')}>
+                      <a href={project.github} target='_blank'>
+                        {project.github}
+                      </a>
+                    </div>
+                  </div>
+                )}
+                {project.url && (
+                  <div className={cx('section-desc')}>
+                    <div className={cx('section-desc-title')}>URL</div>
+                    <div className={cx('section-desc-value')}>
+                      <a href={project.url} target='_blank'>
+                        {project.url}
+                      </a>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
-          </div>
-          <div className={cx('section-item', 'mb-2')}>
-            <b>BoBalGGun</b>, Analysis Korea subway congestion application.
-            (2020)
-            <div>
-              BoBalGGun is a application which analyzes Korea subway congestion.
-            </div>
-            <div className={cx('section-desc-box')}>
-              <div className={cx('section-desc')}>
-                <div className={cx('section-desc-title')}>Skill</div>
-                <div className={cx('section-desc-value')}>React Native</div>
-              </div>
-              <div className={cx('section-desc')}>
-                <div className={cx('section-desc-title')}>Github</div>
-                <div className={cx('section-desc-value')}>
-                  <a
-                    href='https://github.com/Uzihoon/BoBalGGun'
-                    target='_blank'
-                  >
-                    https://github.com/Uzihoon/BoBalGGun
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className={cx('section-item', 'mb-2')}>
-            <b>EUN</b>, Analysis CRISPR/Cas. Korea University (2020)
-            <div>
-              EUN is the website that provides the easy way to analyze
-              CRISPR/Cas efficiency. This project was very intersting because
-              it's using for university or labs. This website uses for analysis
-              RNA experiment result. Of course there's another analysis website,
-              but they could analyze only one result. EUN can analyze more than
-              one result and report the result with table, percentage, json file
-              and even excel file. You can try to analyze even you don't have
-              RNA result. Just click 'Run analze sample file' button on the top.
-            </div>
-            <div className={cx('section-desc-box')}>
-              <div className={cx('section-desc')}>
-                <div className={cx('section-desc-title')}>Skill</div>
-                <div className={cx('section-desc-value')}>
-                  React, Redux, Redux-Saga, Typescript, Webworker, Cognito,
-                  CloudFront
-                </div>
-              </div>
-              <div className={cx('section-desc')}>
-                <div className={cx('section-desc-title')}>Github</div>
-                <div className={cx('section-desc-value')}>
-                  <a href='https://github.com/Uzihoon/eun' target='_blank'>
-                    https://github.com/Uzihoon/eun
-                  </a>
-                </div>
-              </div>
-              <div className={cx('section-desc')}>
-                <div className={cx('section-desc-title')}>URL</div>
-                <div className={cx('section-desc-value')}>
-                  <a href='https://daeunyoon.com' target='_blank'>
-                    https://daeunyoon.com
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className={cx('section-item', 'mb-2')}>
-            <b>TunA</b>, Application Performance Monitoring Solution. LG CNS
-            (2019 - 2020)
-            <div>
-              TunA is the application performance monitoring service that's
-              based on Scouter. I joined this project as front-end developer to
-              make visualized metrics.
-            </div>
-            <div className={cx('section-desc-box')}>
-              <div className={cx('section-desc')}>
-                <div className={cx('section-desc-title')}>Skill</div>
-                <div className={cx('section-desc-value')}>
-                  React, Redux, Redux-Saga, Typescript, Chart.js, Webworker
-                </div>
-              </div>
-              <div className={cx('section-desc')}>
-                <div className={cx('section-desc-title')}>URL</div>
-                <div className={cx('section-desc-value')}>
-                  <a
-                    href='https://www.lgcns.co.kr/Solution/TunA'
-                    target='_blank'
-                  >
-                    https://www.lgcns.co.kr/Solution/TunA
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className={cx('section-item', 'mb-2')}>
-            <b>Fanddle</b>, funding service application for singers, actors.
-            (2018)
-            <div>
-              Fanddle is funding service application for singers, acts in mobile
-              device. This project is the first time that I've never used any
-              framework or library. I developed this applicatin with pure
-              javascript, css and html.
-            </div>
-            <div className={cx('section-desc-box')}>
-              <div className={cx('section-desc')}>
-                <div className={cx('section-desc-title')}>Skill</div>
-                <div className={cx('section-desc-value')}>
-                  HTML, CSS, Javascript, Webpack, Babel
-                </div>
-              </div>
-              <div className={cx('section-desc')}>
-                <div className={cx('section-desc-title')}>Github</div>
-                <div className={cx('section-desc-value')}>
-                  <a href='https://github.com/Uzihoon/fanddle' target='_blank'>
-                    https://github.com/Uzihoon/fanddle
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={cx('section')}>
-        <div className={cx('section-title')}>Art Work</div>
-        <div className={cx('section-content')}>
-          <div className={cx('section-item')}>
-            <div className={cx('flag-box')}>
-              <img src={Flag1} />
-              <img src={Flag2} />
-            </div>
-          </div>
-          <div className={cx('section-item')}>
-            <div className={cx('flag-box')}>
-              <img src={Flag3} />
-              <img src={Flag4} />
-            </div>
-          </div>
-          <div className={cx('section-item')}>
-            <div className={cx('flag-box')}>
-              <img src={Flag5} />
-              <img src={Flag6} />
-            </div>
-          </div>
-          <div className={cx('section-item')}>
-            <div className={cx('flag-box')}>
-              <img src={Flag7} />
-              <img src={Flag8} />
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

@@ -207,4 +207,18 @@
       margin-bottom: 10px;
     }
   }
+
+  .section-main-title {
+    flex-direction: column !important;
+  }
+
+  .date {
+    flex-direction: row !important;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 15px !important;
+  }
+  .section-sub-title {
+    margin-bottom: 5px !important;
+  }
 }

@@ -24,46 +24,66 @@ interface Project {
 
 const projectList: Project[] = [
   {
-    title: 'Samsing Control Tower',
-    subTitle: 'Samsung admin web application',
+    title: 'Samsung Control Tower',
+    subTitle: 'Samsung admin web service',
     desc: [
       'Built up management service for Samsung admin',
       'Improved management system performance and user interface',
-      'Developed web application for dashboard and statistics using React for front-end development and Kotlin for back-end development'
+      'Developed web service for dashboard and statistics using React for front-end development and Kotlin for back-end development'
     ],
     skill: ['React', 'Recoil']
   },
   {
     title: 'Customer Portal',
-    subTitle: 'Samsung customer web-app application',
-    desc: [],
+    subTitle: 'Samsung customer web application',
+    desc: [
+      'Built up customer service application for Samsung Electronics America',
+      'Improved previous UI/UX',
+      'Developed web application for ticket service using Angular'
+    ],
     skill: ['Angular'],
     url: 'https://samsungcso.com'
   },
   {
     title: 'HRM Web',
     subTitle: 'Robot management web application for Hyundai Robotics',
-    desc: [],
+    desc: [
+      'Built up web and desktop application for Hyundai Robotics robot management system',
+      'Used Electron to make connection between robot network system and server',
+      'Developed and improved web and desktop application performance using React'
+    ],
     skill: ['React', 'Redux', 'Redux-Saga', 'Typescript', 'Electron']
   },
   {
     title: 'Heybunny',
-    subTitle: 'News subscription web-app application',
-    desc: [],
+    subTitle: 'News subscription web application',
+    desc: [
+      'Built up design system and web application for subscription service',
+      'Applied adaptive web design for desktop, tablet, and mobile',
+      'Developed server side rendering(SSR) using Next.js'
+    ],
     skill: ['Next.js', 'Redux', 'Redux-saga'],
     url: 'https://www.heybunny.io/'
   },
   {
     title: 'Gcon Studio',
-    subTitle: 'Translation web services based on AI',
-    desc: [],
+    subTitle: 'Translation web service based on AI',
+    desc: [
+      'Built up edit and translation service web',
+      'Applied design system to improve development performance',
+      'Developed overall front-end part using Next.js'
+    ],
     skill: ['Next.js', 'Redux', 'Redux-saga']
   },
 
   {
     title: 'NexClipper',
-    subTitle: 'Kubernetes management web application',
-    desc: [],
+    subTitle: 'Kubernetes management web service',
+    desc: [
+      'Developed overall process from design to front-end development',
+      'Built up CI/CD environment using Docker',
+      'Developed Kubernetes monitoring and management service using React'
+    ],
     skill: ['React', 'Redux', 'Redux-saga'],
     url: 'https://console.nexclipper.io'
   },
@@ -81,7 +101,7 @@ const projectList: Project[] = [
   },
   {
     title: 'BoBalGGun',
-    subTitle: 'Subway congestion analysis mobile application',
+    subTitle: 'Subway congestion analysis cross platform mobile application',
     desc: [
       'Developed average congestion level by time period using 2015 subway congestion level provided by Seoul Metro',
       'Designed interactive UI for analysis of traffic congestion',
@@ -92,9 +112,9 @@ const projectList: Project[] = [
   },
   {
     title: 'EUN',
-    subTitle: 'CRISPR/CAS analysis web application',
+    subTitle: 'CRISPR/CAS analysis web service',
     desc: [
-      'Developed CRISPR/CAS analysis web application with efficiency',
+      'Developed CRISPR/CAS analysis web service with efficiency',
       'Used web worker to improve analysis performance and to analyze one or more sequencing data',
       'Provided analysis data in Excel, JSON, and Line Chart image files'
     ],
@@ -112,18 +132,18 @@ const projectList: Project[] = [
 
   {
     title: 'TunA',
-    subTitle: 'Application Performance Management web application',
+    subTitle: 'Application Performance Management web service',
     desc: [
       'Improved legacy source code developed with Angular.js using React',
       'Built up real-time visualize monitoring and statistics web service',
-      'Developed web application that tracks web application server and Kubernetes'
+      'Developed web service that tracks web application server and Kubernetes'
     ],
     skill: ['React', 'Redux', 'Redux-Saga', 'Typescript', 'Chart.js'],
     url: 'https://www.lgcns.co.kr/Solution/TunA'
   },
   {
     title: 'Fanddle',
-    subTitle: 'Funding service web-app application for entertainers',
+    subTitle: 'Funding web application for entertainers',
     desc: [],
     skill: ['HTML', 'CSS', 'Javascript', 'Webpack', 'Babel'],
     github: 'https://github.com/Uzihoon/fanddle'
@@ -211,7 +231,7 @@ const workList = [
     desc: [
       'Redesigned existing project developed with Angular.js by using React',
       'Developed visualization charts and animation UI for real-time monitoring using JavaScript',
-      'Developed web application for Application Performance Management (APM)'
+      'Developed web service for Application Performance Management (APM)'
     ]
   },
   {

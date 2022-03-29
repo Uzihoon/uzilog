@@ -61,7 +61,7 @@ function Main() {
     postActions.onSetEdit(postId);
     history.push('/uzihoon/admin/write');
   };
-  if (dataList.length <= 0) return <Empty />;
+  // if (dataList.length <= 0) return <Empty />;
   return (
     <div className={cx('main-wrapper')}>
       <MetaTags>

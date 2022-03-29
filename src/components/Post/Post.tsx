@@ -58,7 +58,7 @@ function Post() {
     setTargetPost(post[param.id]);
   }, [post[param.id]]);
 
-  if (!targetPost) return <Empty />;
+  if (!targetPost) return <div />;
 
   return (
     <div className={cx('post-wrapper')}>

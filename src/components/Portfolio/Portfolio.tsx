@@ -60,7 +60,7 @@ const projectList: Project[] = [
     desc: [
       'Built up design system and web application for subscription service',
       'Applied adaptive web design for desktop, tablet, and mobile',
-      'Developed server side rendering(SSR) using Next.js'
+      'Developed server side rendering (SSR) using Next.js'
     ],
     skill: ['Next.js', 'Redux', 'Redux-saga'],
     url: 'https://www.heybunny.io/'

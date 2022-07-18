@@ -153,15 +153,7 @@ const projectList: Project[] = [
 const skills = [
   {
     title: 'Programming Language',
-    skills: [
-      'Javascript(ES6+)',
-      'HTML',
-      'CSS(SASS)',
-      'Typescript',
-      'Python',
-      'Java',
-      'C++'
-    ]
+    skills: ['Javascript(ES6+)', 'HTML', 'CSS(SASS)', 'Typescript']
   },
   {
     title: 'Framework / Library',

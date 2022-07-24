@@ -20,6 +20,7 @@ interface Project {
   skill: string[];
   url?: string;
   github?: string;
+  video?: string;
 }
 
 const projectList: Project[] = [
@@ -139,7 +140,8 @@ const projectList: Project[] = [
       'Developed web service that tracks web application server and Kubernetes'
     ],
     skill: ['React', 'Redux', 'Redux-Saga', 'Typescript', 'Chart.js'],
-    url: 'https://www.lgcns.co.kr/Solution/TunA'
+    url: 'https://www.lgcns.com/EN/Solution/Tuna',
+    video: 'https://youtu.be/aoY0jBKVH40'
   },
   {
     title: 'Fanddle',
@@ -382,6 +384,16 @@ function Portfolio() {
                     <div className={cx('section-desc-value')}>
                       <a href={project.url} target='_blank'>
                         {project.url}
+                      </a>
+                    </div>
+                  </div>
+                )}
+                {project.video && (
+                  <div className={cx('section-desc')}>
+                    <div className={cx('section-desc-title')}>Video</div>
+                    <div className={cx('section-desc-value')}>
+                      <a href={project.video} target='_blank'>
+                        {project.video}
                       </a>
                     </div>
                   </div>

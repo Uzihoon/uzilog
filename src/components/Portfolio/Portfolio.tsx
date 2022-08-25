@@ -29,9 +29,8 @@ const projectList: Project[] = [
     title: 'SAMSUNG Control Tower',
     subTitle: 'SAMSUNG admin web service',
     desc: [
-      'Built up management service for Samsung admin',
-      'Improved management system performance and user interface',
-      'Developed web service for dashboard and statistics using React for front-end development and Kotlin for back-end development',
+      'Took initiative and developed monitoring application all on my own from scratch using React and Recoil.',
+      'Developed monitoring dashboard and statistics page and increased user experience by 50% faster in finding the target ticket by enhancing search conditions for 5M+ tickets.',
     ],
     skill: ['React', 'Recoil', 'Material UI'],
     contribute: 100,
@@ -74,9 +73,9 @@ const projectList: Project[] = [
     title: 'EUN',
     subTitle: 'CRISPR/CAS analysis web service',
     desc: [
-      'Developed CRISPR/CAS analysis web service with efficiency',
-      'Used web worker to improve analysis performance and to analyze one or more sequencing data',
-      'Provided analysis data in Excel, JSON, and Line Chart image files',
+      'Developed the application to analyze CRISPR/CAS results of genetic manipulation using React and AWS services such as CloudFront, S3, and Cognito all on my own from design to front-end and back-end development.',
+      'Reduced analysis time from seven days to just one day by making the application enable to accept more than one sequencing data pair and added the download feature for Excel, JSON, and Line Chart image files.',
+      'Currently, Korea University of Medicine Lab, Kangwon National University, Arkansas University, and illumina biotech company are making use of this service to analyze research results, and a paper was published using EUN.',
     ],
     skill: [
       'React',
@@ -95,9 +94,9 @@ const projectList: Project[] = [
     title: 'TunA',
     subTitle: 'Application Performance Management web service',
     desc: [
-      'Improved legacy source code developed with Angular.js using React',
-      'Built up real-time visualize monitoring and statistics web service',
-      'Developed web service that tracks web application server and Kubernetes',
+      'Developed and led APM application for B2B by myself using React from scratch in front-end development.',
+      'Improved and refactored legacy source code developed with Angular.js using React, and increased application performance by 100% by using web worker and WebSocket (SockJS), resulting in reducing the real-time period from 7 seconds to 3 seconds.',
+      'Handled and managed 5M+ data to visualize monitoring and statistics dashboard and implemented Line, Bar, Heatmap, and Topology charts using Canvas and Chart.js',
     ],
     skill: ['React', 'Redux', 'Redux-Saga', 'Typescript', 'Chart.js'],
     url: 'https://www.lgcns.com/EN/Solution/Tuna',
@@ -238,9 +237,9 @@ const workList = [
     date: 'Aug. 2020 – Apr. 2022',
     subTitle: 'Contract, Remote',
     desc: [
-      'Built up front-end environment using Angular and React',
-      'Optimized existing source code performance and developed new functions',
-      'Developed web application for Samsung Electronics America admin services',
+      'Collaborated with project manager, back-end developers, and designers to design, build, test, and improve responsive and mobile-first websites using Angular and React.',
+      'Built and maintained cross-browser and interactive UI for 3K+ users.',
+      'Enhanced UX and development performance by restructuring data structure and implementing reusable components, resulting in improvements of 30% in user satisfaction and 20% in performance.',
     ],
   },
   {
@@ -249,9 +248,8 @@ const workList = [
     date: 'Jan. 2019 – July 2020',
     subTitle: 'Contract',
     desc: [
-      'Redesigned existing project developed with Angular.js by using React',
-      'Developed visualization charts and animation UI for real-time monitoring using JavaScript',
-      'Developed web service for Application Performance Management (APM)',
+      'Led the project as a front-end engineer and participated in design, development, deployment, and testing APM application.',
+      'Conducted React training for co-workers on how to build efficient React applications.',
     ],
   },
   {
@@ -260,9 +258,7 @@ const workList = [
     date: 'Nov. 2017 – Dec. 2019',
     subTitle: 'Full-Time',
     desc: [
-      'Built up design system and overall front-end environment',
-      'Developed marketing analysis web services using JavaScript',
-      'Developed collaborative tool for in-house using JavaScript and PHP',
+      'Built and maintained the marketing analysis app and in-house collaborative tool as a front-end engineer and implemented custom UI/UX components system using JavaScript and increased KPI by 50%.',
     ],
   },
 ];

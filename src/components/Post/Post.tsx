@@ -7,6 +7,7 @@ import { useParams, useHistory } from 'react-router';
 import moment from 'moment';
 import Empty from 'components/Empty';
 import MetaTags from 'react-meta-tags';
+import { DiscussionEmbed } from 'disqus-react';
 
 import { useTagGet, usePostGet } from 'hooks/lib';
 import usePostActions from 'hooks/post/usePostActions';
@@ -16,6 +17,7 @@ const cx = classNames.bind(styles);
 
 function Post() {
   const [targetPost, setTargetPost] = useState<IPost | null>(null);
+  const [postId, setPostId] = useState<string | null>(null);
   const tagList = useTagGet('tagList');
   const post = usePostGet('post') as IPostBucket;
   const postActions = usePostActions();
@@ -40,9 +42,12 @@ function Post() {
     }
     const id = param.id;
     getPost(id);
+    setPostId(id);
 
-    const unlisten = history.listen(location => {
-      const pathList = location.pathname.split('/').filter(path => path !== '');
+    const unlisten = history.listen((location) => {
+      const pathList = location.pathname
+        .split('/')
+        .filter((path) => path !== '');
       if (pathList.length < 2) return;
       const id = pathList[1];
       getPost(id);
@@ -77,10 +82,10 @@ function Post() {
           <div
             className={cx('tag', targetPost.tag)}
             style={{
-              color: tagList.find(tag => tag.tagId === targetPost.tag)?.color
+              color: tagList.find((tag) => tag.tagId === targetPost.tag)?.color,
             }}
           >
-            {tagList.find(tag => tag.tagId === targetPost.tag)?.text}
+            {tagList.find((tag) => tag.tagId === targetPost.tag)?.text}
           </div>
           <div className={cx('date')}>
             {moment(targetPost.createdAt).format('YYYY-MM-DD')}
@@ -96,6 +101,19 @@ function Post() {
       <div className={cx('content')}>
         <ReactMarkdown source={targetPost.content} renderers={{ code: Code }} />
       </div>
+      {postId && (
+        <div className={cx('comment')}>
+          <DiscussionEmbed
+            shortname='uzilog'
+            config={{
+              url: 'https://uzihoon.com',
+              identifier: postId,
+              title: targetPost.title,
+              language: 'ko',
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }

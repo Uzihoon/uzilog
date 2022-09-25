@@ -4,7 +4,6 @@ import { ITag } from 'store/redux/tag';
 
 const url = '/uzilog';
 const apiName = 'uzilog';
-
 export async function getList() {
   return await API.get(apiName, url, null);
 }

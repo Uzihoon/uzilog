@@ -3,7 +3,7 @@ import * as api from 'api';
 import { IAction } from './types';
 import { RootState } from 'store/redux';
 import { IPost, IPostInfo, IPostBucket } from 'store/redux/post';
-import { Storage } from 'aws-amplify';
+import { Storage, API } from 'aws-amplify';
 
 import * as StatusActions from 'store/redux/status';
 import * as PostActions from 'store/redux/post';
@@ -40,7 +40,7 @@ export function* updatePost(action: IAction<IPostInfo>) {
     alert('Update Successfully');
     yield all([
       put(PostActions.setStore({ key: 'edit', value: null })),
-      put(PostActions.setStore({ key: 'editInfo', value: null }))
+      put(PostActions.setStore({ key: 'editInfo', value: null })),
     ]);
   } catch (error) {
     console.error(error);
@@ -61,7 +61,7 @@ export function* getPost(action: IAction<string>) {
     yield put(
       PostActions.setStore({
         key: 'post',
-        value: { ...postBucket, [postId]: post }
+        value: { ...postBucket, [postId]: post },
       })
     );
   } catch (error) {
@@ -95,7 +95,7 @@ export function* setEdit(action: IAction<string>) {
     if (!editInfo) editInfo = yield call(api.getPost, postId);
     yield all([
       put(PostActions.setStore({ key: 'edit', value: postId })),
-      put(PostActions.setStore({ key: 'editInfo', value: editInfo }))
+      put(PostActions.setStore({ key: 'editInfo', value: editInfo })),
     ]);
   } catch (error) {
     console.error(error);
@@ -108,7 +108,7 @@ export function* deleteTemp() {
   const postStore = yield select(getPostDataFromStore);
   const tempImg = postStore.tempImg.concat() as Promise<string | undefined>[];
 
-  tempImg.map(async temp => {
+  tempImg.map(async (temp) => {
     const img: string = (await temp) || '';
     const del = await Storage.vault.remove(img);
   });

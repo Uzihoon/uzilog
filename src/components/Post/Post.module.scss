@@ -12,7 +12,7 @@
   ul,
   ol {
     font-size: 16px;
-    line-height: 29px;
+    line-height: 32px;
     color: #666;
   }
   p {
@@ -106,4 +106,9 @@ blockquote {
       max-width: 70% !important;
     }
   }
+}
+
+.comment {
+  margin-top: 50px;
+  margin-bottom: 70px;
 }

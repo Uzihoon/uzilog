@@ -104,7 +104,7 @@ function Post() {
       {postId && (
         <div className={cx('comment')}>
           <DiscussionEmbed
-            shortname='uzilog'
+            shortname='uzihoondev'
             config={{
               url: 'https://uzihoon.com',
               identifier: postId,

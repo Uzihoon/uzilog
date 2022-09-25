@@ -7,7 +7,7 @@ import { useParams, useHistory } from 'react-router';
 import moment from 'moment';
 import Empty from 'components/Empty';
 import MetaTags from 'react-meta-tags';
-import { DiscussionEmbed } from 'disqus-react';
+import Giscus from '@giscus/react';
 
 import { useTagGet, usePostGet } from 'hooks/lib';
 import usePostActions from 'hooks/post/usePostActions';
@@ -104,14 +104,19 @@ function Post() {
       </div>
       {postId && (
         <div className={cx('comment')}>
-          <DiscussionEmbed
-            shortname={configure.disqus.shortname}
-            config={{
-              url: configure.disqus.url,
-              identifier: postId,
-              title: targetPost.title,
-              language: configure.disqus.language,
-            }}
+          <Giscus
+            id={configure.giscus.id}
+            repo={`${configure.giscus.github}/${configure.giscus.repo}`}
+            repoId={configure.giscus.repoId}
+            category={configure.giscus.category}
+            categoryId={configure.giscus.categoryId}
+            mapping='pathname'
+            reactionsEnabled='1'
+            emitMetadata='0'
+            inputPosition='top'
+            theme='light'
+            lang='en'
+            loading='lazy'
           />
         </div>
       )}

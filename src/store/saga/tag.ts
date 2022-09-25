@@ -4,7 +4,7 @@ import { IAction } from './types';
 import * as api from 'api';
 import * as TagActions from 'store/redux/tag';
 
-export function* getTags() {
+export function* getTags(): any {
   try {
     const data = yield call(api.getTags);
     yield put(TagActions.setData({ key: 'tagList', value: data }));

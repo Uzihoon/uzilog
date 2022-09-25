@@ -47,7 +47,7 @@ export function* updatePost(action: IAction<IPostInfo>) {
   }
 }
 
-export function* getPost(action: IAction<string>) {
+export function* getPost(action: IAction<string>): any {
   try {
     const { payload: postId } = action;
     yield put(StatusActions.setPending());
@@ -71,7 +71,7 @@ export function* getPost(action: IAction<string>) {
   }
 }
 
-export function* getList() {
+export function* getList(): any {
   try {
     yield put(StatusActions.setPending());
     const data = yield call(api.getList);
@@ -83,7 +83,7 @@ export function* getList() {
   }
 }
 
-export function* setEdit(action: IAction<string>) {
+export function* setEdit(action: IAction<string>): any {
   try {
     const { payload: postId } = action;
     yield put(StatusActions.setPending());
@@ -104,7 +104,7 @@ export function* setEdit(action: IAction<string>) {
   }
 }
 
-export function* deleteTemp() {
+export function* deleteTemp(): any {
   const postStore = yield select(getPostDataFromStore);
   const tempImg = postStore.tempImg.concat() as Promise<string | undefined>[];
 

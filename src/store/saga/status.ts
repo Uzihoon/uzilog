@@ -4,7 +4,7 @@ import * as StatusActions from 'store/redux/status';
 import { ILoginParam } from 'store/redux/status';
 import * as api from 'api';
 
-export function* checkAdmin(action: IAction<any>) {
+export function* checkAdmin(action: IAction<any>): any {
   const { payload: history } = action;
   try {
     const data = yield call(api.checkSession);

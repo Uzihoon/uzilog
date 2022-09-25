@@ -12,6 +12,7 @@ import { DiscussionEmbed } from 'disqus-react';
 import { useTagGet, usePostGet } from 'hooks/lib';
 import usePostActions from 'hooks/post/usePostActions';
 import { IPostBucket, IPost } from 'store/redux/post';
+import configure from 'config';
 
 const cx = classNames.bind(styles);
 
@@ -104,12 +105,12 @@ function Post() {
       {postId && (
         <div className={cx('comment')}>
           <DiscussionEmbed
-            shortname='uzihoondev'
+            shortname={configure.disqus.shortname}
             config={{
-              url: 'https://uzihoon.com',
+              url: configure.disqus.url,
               identifier: postId,
               title: targetPost.title,
-              language: 'ko',
+              language: configure.disqus.language,
             }}
           />
         </div>

@@ -211,6 +211,12 @@ const skills = [
 
 const educationList = [
   {
+    title: 'Georgia Institute of Technology',
+    date: 'Jan. 2023 - Current',
+    location: 'Georgia Atlanta, USA',
+    desc: ['Master of Computer Science'],
+  },
+  {
     title: 'Korea National Open University',
     date: 'Mar. 2020 - Feb. 2020',
     location: 'Seoul, Korea',

@@ -5,11 +5,11 @@ import { ITag } from 'store/redux/tag';
 const url = '/uzilog';
 const apiName = 'uzilog';
 export async function getList() {
-  return await API.get(apiName, url, null);
+  return await API.get(apiName, url, {});
 }
 
 export async function getPost(id: string) {
-  return await API.get(apiName, `${url}/${id}`, null);
+  return await API.get(apiName, `${url}/${id}`, {});
 }
 
 export async function createPost(body: IPost) {
@@ -21,7 +21,7 @@ export async function updatePost(postId: string, body: IPost) {
 }
 
 export async function deletePost(postId: string) {
-  return await API.del(apiName, `${url}/${postId}`, null);
+  return await API.del(apiName, `${url}/${postId}`, {});
 }
 
 export async function checkSession() {
@@ -37,7 +37,7 @@ export async function signOut() {
 }
 
 export async function getTags() {
-  return await API.get(apiName, '/tags', null);
+  return await API.get(apiName, '/tags', {});
 }
 
 export async function createTag(body: ITag) {

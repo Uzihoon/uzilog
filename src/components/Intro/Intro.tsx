@@ -20,7 +20,7 @@ function Intro() {
       setHidden(false);
       setLoading();
     } else {
-      setTimeout(() => setNone(true), 800);
+      setTimeout(() => setNone(true), 200);
       setHidden(true);
     }
   }, [loading]);
@@ -34,14 +34,14 @@ function Intro() {
       strings: ["<div class='type'>UZILOG<span class='dot'/></div>"],
       typeSpeed: 30,
       backSpeed: 50,
-      backDelay: 0
+      backDelay: 0,
     };
     typed = new Typed('#typho', options);
   };
 
   return (
     <div
-      ref={r => (wrapper = r)}
+      ref={(r) => (wrapper = r)}
       className={cx('intro-wrapper', hidden && 'hidden', none && 'none')}
       id='typho'
     />

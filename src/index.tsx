@@ -1,12 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Root from './Root';
 import * as serviceWorker from './serviceWorker';
-import { API } from 'aws-amplify';
+import { Amplify } from 'aws-amplify';
 import 'styles/base.scss';
 import config from './config';
 
-API.configure({
+Amplify.configure({
   Auth: {
     mandatorySignIn: true,
     region: config.cognito.REGION,
@@ -30,7 +30,9 @@ API.configure({
   },
 });
 
-ReactDOM.render(<Root />, document.getElementById('root'));
+const container = document.getElementById('app');
+const root = createRoot(container!);
+root.render(<Root />);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

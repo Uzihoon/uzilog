@@ -1,10 +1,10 @@
-import { StatusState, StatusAction } from "./types";
-import { createReducer } from "typesafe-actions";
-import { SET_PENDING, SET_FINISH, SET_STATUS } from "./actions";
+import { StatusState, StatusAction } from './types';
+import { createReducer } from 'typesafe-actions';
+import { SET_PENDING, SET_FINISH, SET_STATUS } from './actions';
 
 const initialState: StatusState = {
   loading: true,
-  admin: null
+  admin: null,
 };
 
 const status = createReducer<StatusState, StatusAction>(initialState, {
@@ -21,7 +21,7 @@ const status = createReducer<StatusState, StatusAction>(initialState, {
     const k = key as keyof StatusState;
     (state[k] as any) = value;
     return state;
-  }
+  },
 });
 
 export default status;

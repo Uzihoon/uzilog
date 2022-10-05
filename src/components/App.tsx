@@ -4,7 +4,7 @@ import {
   Route,
   BrowserRouter as Router,
   Redirect,
-  useHistory
+  useHistory,
 } from 'react-router-dom';
 import {
   MainPage,
@@ -12,7 +12,7 @@ import {
   LoginPage,
   WritePage,
   TagPage,
-  PortfolioPage
+  PortfolioPage,
 } from 'pages';
 import Intro from 'components/Intro';
 import PrivateRouter from 'common/PrivateRouter';
@@ -31,7 +31,6 @@ function App() {
     tagActions.onGetTags();
     statusActions.onCheckAdmin(history);
   }, []);
-
   return (
     <>
       <Router>

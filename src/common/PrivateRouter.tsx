@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect, useHistory } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 interface IPrivateRouteProps {
   component: React.FC<any>;
@@ -35,7 +35,7 @@ function PrivateRoute({
     <Route
       {...rest}
       path={path}
-      render={props =>
+      render={(props) =>
         authed ? (
           <Component {...props} />
         ) : (

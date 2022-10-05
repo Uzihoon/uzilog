@@ -15,15 +15,16 @@ function Login() {
   const history = useHistory();
   const statusActions = useStatusActions();
   const admin = useStatusGet('admin');
-
   useEffect(() => {
     if (checked) return;
-    statusActions.onCheckAdmin(history);
+    // statusActions.onCheckAdmin(history);
     setChecked(true);
   }, []);
 
   useEffect(() => {
-    if (admin && checked) history.push('/uzihoon/admin/write');
+    if (admin && checked) {
+      history.push('/uzihoon/admin/write');
+    }
   }, [admin]);
 
   const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {

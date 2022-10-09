@@ -16,6 +16,8 @@ import { IPost } from 'store/redux/post';
 
 const cx = classNames.bind(styles);
 
+const initial = [...Array(5)];
+
 function Main() {
   const [visible, setVisible] = useState(false);
   const [tempId, setTempId] = useState<string | null>(null);
@@ -56,7 +58,7 @@ function Main() {
     postId: string
   ) => {
     e.preventDefault();
-    const editInfo = dataList.find(data => data.postId === postId);
+    const editInfo = dataList.find((data) => data.postId === postId);
     if (!editInfo) return;
     postActions.onSetEdit(postId);
     history.push('/uzihoon/admin/write');
@@ -67,31 +69,42 @@ function Main() {
       <MetaTags>
         <title>UZILOG</title>
       </MetaTags>
+      {(!dataList || dataList.length === 0) &&
+        initial.map((_, idx) => (
+          <div key={idx} className={cx('loading-list')}>
+            <div className={cx('loading-tag-box')}>
+              <div className={cx('loading', 'loading-tag')}></div>
+              <div className={cx('loading', 'loading-date')}></div>
+            </div>
+            <div className={cx('loading', 'loading-header')} />
+            <div className={cx('loading', 'loading-desc')} />
+          </div>
+        ))}
       {dataList
         .sort((a, b) => b.createdAt - a.createdAt)
-        .map(t => (
+        .map((t) => (
           <Link to={`/post/${t.postId}`} className={cx('list')} key={t.postId}>
             <div className={cx('header')}>
               <div className={cx('tag')}>
                 <div
                   className={cx('tag-title')}
                   style={{
-                    color: tagList.find(tag => tag.tagId === t.tag)?.color
+                    color: tagList.find((tag) => tag.tagId === t.tag)?.color,
                   }}
                 >
-                  {tagList.find(tag => tag.tagId === t.tag)?.text}
+                  {tagList.find((tag) => tag.tagId === t.tag)?.text}
                 </div>
                 {admin && (
                   <>
                     <div
                       className={cx('action')}
-                      onClick={e => handleUpdate(e, t.postId)}
+                      onClick={(e) => handleUpdate(e, t.postId)}
                     >
                       EDIT
                     </div>
                     <div
                       className={cx('action')}
-                      onClick={e => confirmDelete(e, t.postId)}
+                      onClick={(e) => confirmDelete(e, t.postId)}
                     >
                       DELETE
                     </div>

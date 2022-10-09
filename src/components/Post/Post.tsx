@@ -64,7 +64,34 @@ function Post() {
     setTargetPost(post[param.id]);
   }, [post[param.id]]);
 
-  if (!targetPost) return <div />;
+  if (!targetPost) {
+    return (
+      <div>
+        <div className={cx('header')}>
+          <div className={cx('loading-head')}>
+            <div className={cx('loading', 'loading-tag')} />
+            <div className={cx('loading', 'loading-date')} />
+          </div>
+          <div className={cx('loading', 'loading-title')} />
+          <div className={cx('loading', 'loading-desc')} />
+        </div>
+        <div className={cx('loading', 'loading-box-lg')}></div>
+        <div className={cx('loading', 'loading-box-sm')}></div>
+        <div className={cx('loading', 'loading-box-md')}></div>
+        <div className={cx('loading', 'loading-box-sm')}></div>
+        <div className={cx('loading', 'loading-box-md')}></div>
+        <div className={cx('loading', 'loading-box-md')}></div>
+        <div className={cx('loading', 'loading-box-lg')}></div>
+        <div className={cx('loading', 'loading-box-sm')}></div>
+        <div className={cx('loading', 'loading-box-lg')}></div>
+        <div className={cx('loading', 'loading-box-md')}></div>
+        <div className={cx('loading', 'loading-box-md')}></div>
+        <div className={cx('loading', 'loading-box-sm')}></div>
+        <div className={cx('loading', 'loading-box-md')}></div>
+        <div className={cx('loading', 'loading-box-lg')}></div>
+      </div>
+    );
+  }
 
   return (
     <div className={cx('post-wrapper')}>
@@ -116,7 +143,6 @@ function Post() {
             inputPosition='top'
             theme='light'
             lang='en'
-            loading='lazy'
           />
         </div>
       )}

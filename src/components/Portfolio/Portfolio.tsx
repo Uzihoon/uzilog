@@ -238,6 +238,13 @@ const educationList = [
 
 const workList = [
   {
+    title: 'AWS',
+    location: 'Vancouver, Canada',
+    date: 'Oct. 2022 - Current',
+    subTitle: 'Full-Time',
+    desc: ['Joined AWS payment team'],
+  },
+  {
     title: 'DK Rabbit',
     location: 'California, USA',
     date: 'Aug. 2020 – Apr. 2022',

@@ -1,21 +1,77 @@
 @import 'styles/var.scss';
+@media (prefers-color-scheme: light) {
+  a {
+    color: #242424;
+  }
+
+  .list {
+    &:hover {
+      background-color: #f6f6f6;
+    }
+  }
+
+  .loading {
+    background: #f6f7f8;
+    background-image: -webkit-gradient(
+      linear,
+      left center,
+      right center,
+      from(#f6f7f8),
+      color-stop(0.2, #edeef1),
+      color-stop(0.4, #f6f7f8),
+      to(#f6f7f8)
+    );
+    background-image: -webkit-linear-gradient(
+      left,
+      #f6f7f8 0%,
+      #edeef1 20%,
+      #f6f7f8 40%,
+      #f6f7f8 100%
+    );
+  }
+}
+@media (prefers-color-scheme: dark) {
+  a {
+    color: #d7d6d6;
+  }
+  .list {
+    &:hover {
+      background-color: #1a1a1a;
+    }
+  }
+
+  .loading {
+    background: #2d2d2d;
+    background-image: -webkit-gradient(
+      linear,
+      left center,
+      right center,
+      from(#2d2d2d),
+      color-stop(0.2, #505050),
+      color-stop(0.4, #343434),
+      to(#080808)
+    );
+    background-image: -webkit-linear-gradient(
+      left,
+      #2d2d2d 0%,
+      #505050 20%,
+      #343434 40%,
+      #080808 100%
+    );
+  }
+}
 
 .main-wrapper {
   width: 100%;
 
-  a {
-    color: #242424;
-  }
   .list {
     display: block;
     width: 100%;
+    border-radius: 10px;
     cursor: pointer;
     transition: all 0.4s;
     padding: 30px 15px;
     margin-bottom: 10px;
-    &:hover {
-      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
-    }
     .header {
       display: flex;
       align-items: center;
@@ -54,7 +110,7 @@
       line-height: 2.5em;
       .text {
         font-size: 1.5em;
-        border-bottom: 1px solid $mainColor;
+        border-bottom: 2px solid $mainColor;
         margin-bottom: 5px;
       }
     }
@@ -93,23 +149,7 @@
   animation-iteration-count: infinite;
   animation-name: placeholderSkeleton;
   animation-timing-function: linear;
-  background: #f6f7f8;
-  background-image: -webkit-gradient(
-    linear,
-    left center,
-    right center,
-    from(#f6f7f8),
-    color-stop(0.2, #edeef1),
-    color-stop(0.4, #f6f7f8),
-    to(#f6f7f8)
-  );
-  background-image: -webkit-linear-gradient(
-    left,
-    #f6f7f8 0%,
-    #edeef1 20%,
-    #f6f7f8 40%,
-    #f6f7f8 100%
-  );
+
   background-repeat: no-repeat;
   background-size: 3000px 104px;
   position: relative;

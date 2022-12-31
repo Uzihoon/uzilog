@@ -1,4 +1,4 @@
-@import "styles/var.scss";
+@import 'styles/var.scss';
 
 .write-container {
   position: fixed;
@@ -149,7 +149,7 @@
       -webkit-tap-highlight-color: transparent;
 
       &:after {
-        content: "";
+        content: '';
         position: absolute;
         top: 3px;
         left: 3px;
@@ -166,7 +166,7 @@
   }
 }
 
-input[type="radio"]:not(:checked) {
+input[type='radio']:not(:checked) {
   &:hover {
     + .label {
       &::after {
@@ -176,7 +176,7 @@ input[type="radio"]:not(:checked) {
     }
   }
 }
-input[type="radio"]:checked + .label {
+input[type='radio']:checked + .label {
   border-color: $mainColor;
 
   &:after {
@@ -196,8 +196,6 @@ input[type="radio"]:checked + .label {
 }
 
 blockquote {
-  background-color: #efefef;
   margin: 0px !important;
   padding: 0.5em 40px;
-  color: #636363;
 }

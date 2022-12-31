@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:900i&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:400, 500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap');
 @import 'styles/var.scss';
 
 * {
@@ -10,7 +11,6 @@
 body {
   font-size: 14px;
   font-family: 'Noto Sans KR', sans-serif;
-  color: #222222;
 }
 
 a {
@@ -27,4 +27,19 @@ input {
 
 code {
   color: #ffad2e;
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: white;
+    color: #222222;
+  }
+}
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #c8d1d9;
+  }
 }

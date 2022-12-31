@@ -22,7 +22,7 @@ function Tag() {
   };
 
   const onSubmit = () => {
-    const emptyField = Object.values(tagForm).filter(tag => !tag);
+    const emptyField = Object.values(tagForm).filter((tag) => !tag);
     if (emptyField.length > 0) {
       alert('Fill tag form');
       return;
@@ -34,13 +34,25 @@ function Tag() {
   return (
     <div>
       <h1>Tag List</h1>
-      <div>
-        {tagList.map(tag => (
-          <div key={tag.tagId} style={{ color: tag.color }}>
-            {tag.text}
-          </div>
-        ))}
+      <div className={cx('tag-box')}>
+        <div className={cx('tag-bg-dark')}>
+          <h2>Dark Theme</h2>
+          {tagList.map((tag) => (
+            <div key={tag.tagId} style={{ color: tag.color }}>
+              {tag.text}
+            </div>
+          ))}
+        </div>
+        <div className={cx('tag-bg-light')}>
+          <h2>Light Theme</h2>
+          {tagList.map((tag) => (
+            <div key={tag.tagId} style={{ color: tag.color }}>
+              {tag.text}
+            </div>
+          ))}
+        </div>
       </div>
+
       <h1>Add Tag</h1>
       <input
         type='text'

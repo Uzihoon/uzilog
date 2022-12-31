@@ -1,3 +1,32 @@
 .input {
   border: 1px solid black;
 }
+
+.tag-box {
+  display: flex;
+
+  & > div {
+    padding: 20px;
+    margin: 0 20px;
+
+    div {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.tag-bg-dark {
+  background-color: #121212 !important;
+
+  h2 {
+    color: #fff;
+  }
+}
+
+.tag-bg-light {
+  background-color: #ffffff !important;
+
+  h2 {
+    color: #000;
+  }
+}

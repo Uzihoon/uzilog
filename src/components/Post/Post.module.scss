@@ -1,28 +1,150 @@
 @import 'styles/var.scss';
 
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  .post-wrapper {
+    a {
+      color: #666666 !important;
+      border-bottom: 2px solid $mainColor;
+    }
+
+    p,
+    ul,
+    ol {
+      color: #666;
+    }
+
+    p {
+      code {
+        background: #f0f0f0;
+        color: #444;
+      }
+    }
+  }
+
+  blockquote {
+    background-color: #efefef;
+    color: #636363;
+  }
+  .header {
+    .post-desc {
+      span {
+        color: #b8b8b8;
+      }
+    }
+  }
+
+  .date {
+    opacity: 0.5;
+  }
+
+  .loading {
+    background: #f6f7f8;
+    background-image: -webkit-gradient(
+      linear,
+      left center,
+      right center,
+      from(#f6f7f8),
+      color-stop(0.2, #edeef1),
+      color-stop(0.4, #f6f7f8),
+      to(#f6f7f8)
+    );
+    background-image: -webkit-linear-gradient(
+      left,
+      #f6f7f8 0%,
+      #edeef1 20%,
+      #f6f7f8 40%,
+      #f6f7f8 100%
+    );
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .post-wrapper {
+    a {
+      color: #dddddd !important;
+      border-bottom: 2px solid $darkMainColor;
+    }
+
+    p,
+    ul,
+    ol {
+      color: #c9c9c9;
+    }
+
+    p {
+      code {
+        background: #454545;
+        color: #ffffff;
+      }
+    }
+
+    strong {
+      color: #d2d2d2;
+    }
+  }
+
+  blockquote {
+    background-color: #222222;
+    color: #636363;
+  }
+  .header {
+    .post-desc {
+      span {
+        color: #7e7d7d;
+      }
+    }
+  }
+  .loading {
+    background: #2d2d2d;
+    background-image: -webkit-gradient(
+      linear,
+      left center,
+      right center,
+      from(#2d2d2d),
+      color-stop(0.2, #505050),
+      color-stop(0.4, #343434),
+      to(#080808)
+    );
+    background-image: -webkit-linear-gradient(
+      left,
+      #2d2d2d 0%,
+      #505050 20%,
+      #343434 40%,
+      #080808 100%
+    );
+  }
+
+  .date {
+    opacity: 1;
+  }
+}
+
+/* Common mode */
 .post-wrapper {
   width: 100%;
-
-  a {
-    color: #666666 !important;
-    border-bottom: 2px solid $mainColor;
-  }
 
   p,
   ul,
   ol {
-    font-size: 16px;
-    line-height: 32px;
-    color: #666;
+    font-size: 15px;
+    line-height: 28px;
   }
   p {
     code {
-      font-family: 'Noto Sans KR', sans-serif;
-      background: #fff8cc;
+      font-family: 'Ubuntu', 'Noto Sans KR', sans-serif;
       font-size: 0.85em;
       padding: 2px 5px;
-      color: #c2a900;
       font-weight: bold;
+      border-radius: 3px;
+    }
+  }
+
+  pre {
+    border-radius: 7px;
+    code {
+      font-family: 'Ubuntu', sans-serif !important;
     }
   }
 
@@ -37,6 +159,15 @@
       max-width: 100%;
     }
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: normal;
+  }
 }
 
 pre {
@@ -47,15 +178,13 @@ pre {
 }
 
 blockquote {
-  background-color: #efefef;
   margin: 0px !important;
   padding: 0.5em 40px;
-  color: #636363;
+  border-radius: 7px;
 }
 
 .header {
   padding: 15px 0;
-  border-bottom: 1px solid rgb(230, 230, 230);
   margin-bottom: 40px;
 
   .desc-box {
@@ -67,20 +196,20 @@ blockquote {
   }
 
   .date {
-    opacity: 0.5;
+    font-size: 0.9em;
   }
 
   .post-title {
-    font-size: 3em;
+    font-size: 2.3em;
     word-break: break-all;
+    font-weight: bold;
   }
 
   .post-desc {
-    margin: 8px 0 3px 0;
+    margin: 10px 0 3px 0;
     font-size: 1.3em;
     span {
-      color: #b8b8b8;
-      font-size: 1.1em;
+      font-size: 0.8em;
     }
   }
 }
@@ -109,7 +238,7 @@ blockquote {
 }
 
 .comment {
-  margin-top: 100px;
+  margin-top: 150px;
   margin-bottom: 100px;
 }
 
@@ -119,23 +248,7 @@ blockquote {
   animation-iteration-count: infinite;
   animation-name: placeholderSkeleton;
   animation-timing-function: linear;
-  background: #f6f7f8;
-  background-image: -webkit-gradient(
-    linear,
-    left center,
-    right center,
-    from(#f6f7f8),
-    color-stop(0.2, #edeef1),
-    color-stop(0.4, #f6f7f8),
-    to(#f6f7f8)
-  );
-  background-image: -webkit-linear-gradient(
-    left,
-    #f6f7f8 0%,
-    #edeef1 20%,
-    #f6f7f8 40%,
-    #f6f7f8 100%
-  );
+
   background-repeat: no-repeat;
   background-size: 3000px 104px;
   position: relative;

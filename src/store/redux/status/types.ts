@@ -1,11 +1,14 @@
-import { ActionType } from "typesafe-actions";
-import * as actions from "./actions";
+import { ActionType } from 'typesafe-actions';
+import * as actions from './actions';
 
 export type StatusAction = ActionType<typeof actions>;
+
+export type Theme = 'light' | 'dark';
 
 export type StatusState = {
   loading: boolean;
   admin: boolean | null;
+  theme: Theme;
 };
 
 export interface ISetStateKey {
@@ -13,7 +16,7 @@ export interface ISetStateKey {
   value: any;
 }
 
-export type StatusKey = "loading" | "admin";
+export type StatusKey = keyof StatusState;
 
 export interface ILoginParam {
   email: string;

@@ -4,7 +4,6 @@ import classNames from 'classnames/bind';
 import Typed from 'typed.js';
 
 import { useStatusGet } from 'hooks/lib';
-import { useHistory } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -12,6 +11,7 @@ function Intro() {
   const [hidden, setHidden] = useState(false);
   const [none, setNone] = useState(false);
   const loading = useStatusGet('loading') as boolean;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   let typed: any | null;
   let wrapper: HTMLDivElement | null;
   useEffect(() => {

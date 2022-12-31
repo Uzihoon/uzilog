@@ -5,16 +5,32 @@ import ReactMarkdown from 'react-markdown';
 import Code from 'components/Code';
 import { useParams, useHistory } from 'react-router';
 import moment from 'moment';
-import Empty from 'components/Empty';
 import MetaTags from 'react-meta-tags';
 import Giscus from '@giscus/react';
 
-import { useTagGet, usePostGet } from 'hooks/lib';
+import { useTagGet, usePostGet, useStatusGet } from 'hooks/lib';
 import usePostActions from 'hooks/post/usePostActions';
 import { IPostBucket, IPost } from 'store/redux/post';
 import configure from 'config';
 
 const cx = classNames.bind(styles);
+
+const loadingContentSizes = [
+  'lg',
+  'sm',
+  'md',
+  'sm',
+  'md',
+  'md',
+  'lg',
+  'sm',
+  'lg',
+  'md',
+  'md',
+  'sm',
+  'md',
+  'lg',
+];
 
 function Post() {
   const [targetPost, setTargetPost] = useState<IPost | null>(null);
@@ -24,6 +40,7 @@ function Post() {
   const postActions = usePostActions();
   const param = useParams() as { id: string };
   const history = useHistory();
+  const theme = useStatusGet('theme');
 
   const getPost = (id: string) => {
     if (!post[id]) {
@@ -36,6 +53,7 @@ function Post() {
 
   const goToTop = () => window.scrollTo(0, 0);
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     if (!param.id) {
       history.push('/');
@@ -62,7 +80,7 @@ function Post() {
   useEffect(() => {
     if (!post[param.id]) return;
     setTargetPost(post[param.id]);
-  }, [post[param.id]]);
+  }, [param.id, post]);
 
   if (!targetPost) {
     return (
@@ -75,20 +93,12 @@ function Post() {
           <div className={cx('loading', 'loading-title')} />
           <div className={cx('loading', 'loading-desc')} />
         </div>
-        <div className={cx('loading', 'loading-box-lg')}></div>
-        <div className={cx('loading', 'loading-box-sm')}></div>
-        <div className={cx('loading', 'loading-box-md')}></div>
-        <div className={cx('loading', 'loading-box-sm')}></div>
-        <div className={cx('loading', 'loading-box-md')}></div>
-        <div className={cx('loading', 'loading-box-md')}></div>
-        <div className={cx('loading', 'loading-box-lg')}></div>
-        <div className={cx('loading', 'loading-box-sm')}></div>
-        <div className={cx('loading', 'loading-box-lg')}></div>
-        <div className={cx('loading', 'loading-box-md')}></div>
-        <div className={cx('loading', 'loading-box-md')}></div>
-        <div className={cx('loading', 'loading-box-sm')}></div>
-        <div className={cx('loading', 'loading-box-md')}></div>
-        <div className={cx('loading', 'loading-box-lg')}></div>
+        {loadingContentSizes.map((size, index) => (
+          <div
+            key={index}
+            className={cx('loading', `loading-box-${size}`)}
+          ></div>
+        ))}
       </div>
     );
   }
@@ -141,7 +151,7 @@ function Post() {
             reactionsEnabled='1'
             emitMetadata='0'
             inputPosition='top'
-            theme='light'
+            theme={theme}
             lang='en'
           />
         </div>

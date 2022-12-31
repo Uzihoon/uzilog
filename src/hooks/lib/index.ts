@@ -1,14 +1,14 @@
-import { RootState } from "store/redux";
-import { useSelector } from "react-redux";
-import { TagKey } from "store/redux/tag";
-import { StatusKey } from "store/redux/status";
-import { PostKey } from "store/redux/post";
+import { RootState } from 'store/redux';
+import { useSelector } from 'react-redux';
+import { TagKey } from 'store/redux/tag';
+import { StatusKey } from 'store/redux/status';
+import { PostKey } from 'store/redux/post';
 
 export function useTagGet(item: TagKey) {
   return useSelector((state: RootState) => state.tag[item]);
 }
 
-export function useStatusGet(item: StatusKey) {
+export function useStatusGet<T extends StatusKey>(item: T) {
   return useSelector((state: RootState) => state.status[item]);
 }
 

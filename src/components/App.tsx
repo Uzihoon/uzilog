@@ -27,10 +27,31 @@ function App() {
   const tagActions = useTagActions();
   const statusActions = useStatusActions();
 
+  const setThemeMode = (event: MediaQueryListEvent) => {
+    statusActions.onSetTheme(event.matches ? 'dark' : 'light');
+  };
+
   useEffect(() => {
     tagActions.onGetTags();
     statusActions.onCheckAdmin(history);
+
+    const isDarkMode = window.matchMedia(
+      '(prefers-color-scheme: dark)'
+    ).matches;
+
+    statusActions.onSetTheme(isDarkMode ? 'dark' : 'light');
+
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', setThemeMode);
+
+    return () => {
+      window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .removeEventListener('change', setThemeMode);
+    };
   }, []);
+
   return (
     <>
       <Router>

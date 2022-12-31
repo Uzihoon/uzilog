@@ -1,12 +1,24 @@
-@import "styles/var.scss";
+@import 'styles/var.scss';
+
+@media (prefers-color-scheme: light) {
+  .footer-wrapper {
+    a {
+      color: $mainColor;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .footer-wrapper {
+    a {
+      color: $darkMainColor;
+    }
+  }
+}
 
 .footer-wrapper {
   padding: 20px 0;
   display: flex;
-
-  a {
-    color: $mainColor;
-  }
 
   .oper-box {
     margin: 0 10px;

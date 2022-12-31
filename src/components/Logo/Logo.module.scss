@@ -1,15 +1,25 @@
-@import "styles/var.scss";
+@import 'styles/var.scss';
+@media (prefers-color-scheme: light) {
+  .logo-box {
+    color: #242424;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo-box {
+    color: #ffffff;
+  }
+}
 
 .logo-box {
   display: flex;
   align-items: flex-end;
   cursor: pointer;
-  color: #242424;
   text-decoration: none;
 
   .logo-text {
     font-size: 30px;
-    font-family: "Roboto";
+    font-family: 'Roboto';
     font-style: italic;
     font-weight: bold;
   }

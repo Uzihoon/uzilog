@@ -1,5 +1,5 @@
-import { ActionType } from "typesafe-actions";
-import * as actions from "./actions";
+import { ActionType } from 'typesafe-actions';
+import * as actions from './actions';
 
 export type PostAction = ActionType<typeof actions>;
 
@@ -10,6 +10,11 @@ export type PostState = {
   editInfo: IPost | null;
   tempImg: Promise<string | undefined>[];
 };
+
+export enum Type {
+  POST = 'post',
+  AD = 'ad',
+}
 
 export interface IPostBucket {
   [P: string]: IPost;
@@ -22,6 +27,7 @@ export interface IPost {
   tag: string;
   createdAt: number;
   postId: string;
+  type?: Type.POST;
 }
 
 export interface ISetStore {
@@ -29,9 +35,15 @@ export interface ISetStore {
   value: any;
 }
 
+export interface IAd {
+  type: Type.AD;
+}
+
 export interface IPostInfo {
   postId: string;
   body: IPost;
 }
 
-export type PostKey = "list" | "post" | "editInfo" | "edit" | "tempImg";
+export type PostKey = keyof PostState;
+
+export type PostList = Array<IPost | IAd>;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import moment from 'moment';
 import styles from './Main.module.scss';
@@ -8,11 +8,12 @@ import { Helmet } from 'react-helmet-async';
 
 // Component
 import ConfirmModal from 'components/ConfirmModal';
+import ListInFeed from 'components/GoogleAd/ListInFeed';
 
 // Reducer
 import { useTagGet, useStatusGet, usePostGet } from 'hooks/lib';
 import usePostActions from 'hooks/post/usePostActions';
-import { IPost } from 'store/redux/post';
+import { IAd, PostList, Type } from 'store/redux/post';
 
 const cx = classNames.bind(styles);
 
@@ -21,17 +22,35 @@ const initial = [...Array(5)];
 function Main() {
   const [visible, setVisible] = useState(false);
   const [tempId, setTempId] = useState<string | null>(null);
+  const [postList, setPostList] = useState<PostList>([]);
+
   const tagList = useTagGet('tagList');
-  const dataList = usePostGet('list') as IPost[];
+  const dataList = usePostGet('list');
   const postActions = usePostActions();
-  const admin = useStatusGet('admin') as boolean;
+  const admin = useStatusGet('admin');
   const history = useHistory();
+  const adItem: IAd = useMemo(() => ({ type: Type.AD }), []);
 
   useEffect(() => {
     if (dataList.length <= 0) {
       postActions.onGetList();
     }
   }, []);
+
+  useEffect(() => {
+    const newPostList: PostList = [];
+
+    dataList
+      .sort((a, b) => b.createdAt - a.createdAt)
+      .forEach((list, index) => {
+        if (index && index % 3 === 0) {
+          newPostList.push(adItem);
+        }
+        newPostList.push(list);
+      });
+
+    setPostList(newPostList);
+  }, [dataList, adItem]);
 
   const handleDelete = () => {
     if (!tempId) return;
@@ -68,7 +87,7 @@ function Main() {
       <Helmet prioritizeSeoTags>
         <title>UZILOG</title>
       </Helmet>
-      {(!dataList || dataList.length === 0) &&
+      {(!postList || postList.length === 0) &&
         initial.map((_, idx) => (
           <div key={idx} className={cx('loading-list')}>
             <div className={cx('loading-tag-box')}>
@@ -79,9 +98,12 @@ function Main() {
             <div className={cx('loading', 'loading-desc')} />
           </div>
         ))}
-      {dataList
-        .sort((a, b) => b.createdAt - a.createdAt)
-        .map((t) => (
+      {postList.map((t, idx) =>
+        t.type === 'ad' ? (
+          <div className={cx('list', 'ad-list')} key={idx}>
+            <ListInFeed />
+          </div>
+        ) : (
           <Link to={`/post/${t.postId}`} className={cx('list')} key={t.postId}>
             <div className={cx('header')}>
               <div className={cx('tag')}>
@@ -121,7 +143,8 @@ function Main() {
               <span className={cx('text')}>{t.desc}</span>
             </div>
           </Link>
-        ))}
+        )
+      )}
       {visible && (
         <ConfirmModal
           onCancel={handleCancel}

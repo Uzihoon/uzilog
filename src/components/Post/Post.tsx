@@ -16,6 +16,7 @@ import usePostActions from 'hooks/post/usePostActions';
 import { IPost } from 'store/redux/post';
 import configure from 'config';
 import { useSelector } from 'react-redux';
+import PostAd from 'components/GoogleAd/PostAd';
 
 const cx = classNames.bind(styles);
 
@@ -157,6 +158,7 @@ function Post() {
           }}
         />
       </div>
+      <PostAd />
       {postId && (
         <div className={cx('comment')}>
           <Giscus

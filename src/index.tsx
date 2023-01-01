@@ -31,7 +31,7 @@ Amplify.configure({
 });
 
 const container = document.getElementById('app');
-const root = createRoot(container!);
+const root = createRoot(container!); // createRoot(container!) if you use TypeScript
 root.render(<Root />);
 
 // If you want your app to work offline and load faster, you can change

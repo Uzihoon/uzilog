@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
+
+import moment from 'moment';
 import styles from './Main.module.scss';
 import classNames from 'classnames/bind';
 import { Link, useHistory } from 'react-router-dom';
-import moment from 'moment';
+import { Helmet } from 'react-helmet-async';
 
 // Component
-import Empty from 'components/Empty';
 import ConfirmModal from 'components/ConfirmModal';
-import MetaTags from 'react-meta-tags';
 
 // Reducer
 import { useTagGet, useStatusGet, usePostGet } from 'hooks/lib';
@@ -65,9 +65,9 @@ function Main() {
   };
   return (
     <div className={cx('main-wrapper')}>
-      <MetaTags>
+      <Helmet prioritizeSeoTags>
         <title>UZILOG</title>
-      </MetaTags>
+      </Helmet>
       {(!dataList || dataList.length === 0) &&
         initial.map((_, idx) => (
           <div key={idx} className={cx('loading-list')}>

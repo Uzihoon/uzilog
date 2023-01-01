@@ -2,7 +2,14 @@
   "compilerOptions": {
     "target": "es5",
     "baseUrl": "./src",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "ES6",
+      "esnext",
+      "dom.Iterable",
+      "ScriptHost",
+      "ES2016.Array.Include"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

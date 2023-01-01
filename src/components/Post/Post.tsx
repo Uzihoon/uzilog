@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import { useParams, useHistory } from 'react-router';
+
+import moment from 'moment';
 import styles from './Post.module.scss';
 import classNames from 'classnames/bind';
-import ReactMarkdown from 'react-markdown';
+
 import Code from 'components/Code';
-import { useParams, useHistory } from 'react-router';
-import moment from 'moment';
-import MetaTags from 'react-meta-tags';
+import ReactMarkdown from 'react-markdown';
+import { Helmet } from 'react-helmet-async';
+
 import Giscus from '@giscus/react';
 
 import { useTagGet, usePostGet, useStatusGet } from 'hooks/lib';
 import usePostActions from 'hooks/post/usePostActions';
-import { IPostBucket, IPost } from 'store/redux/post';
+import { IPost } from 'store/redux/post';
 import configure from 'config';
+import { useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
@@ -36,7 +40,7 @@ function Post() {
   const [targetPost, setTargetPost] = useState<IPost | null>(null);
   const [postId, setPostId] = useState<string | null>(null);
   const tagList = useTagGet('tagList');
-  const post = usePostGet('post') as IPostBucket;
+  const post = usePostGet('post');
   const postActions = usePostActions();
   const param = useParams() as { id: string };
   const history = useHistory();
@@ -105,7 +109,7 @@ function Post() {
 
   return (
     <div className={cx('post-wrapper')}>
-      <MetaTags>
+      <Helmet prioritizeSeoTags>
         <title>{`UZILOG - ${targetPost.title}`}</title>
         <meta property='og:title' content={targetPost.title} />
         <meta property='og:description' content={targetPost.desc} />
@@ -114,7 +118,7 @@ function Post() {
           property='og:url'
           content={`https://uzihoon.com/post/${param.id}`}
         />
-      </MetaTags>
+      </Helmet>
       <div className={cx('header')}>
         <div className={cx('desc-box')}>
           <div
@@ -137,7 +141,21 @@ function Post() {
         </div>
       </div>
       <div className={cx('content')}>
-        <ReactMarkdown source={targetPost.content} renderers={{ code: Code }} />
+        <ReactMarkdown
+          children={targetPost.content}
+          components={{
+            code({ node, inline, className, children, ...props }) {
+              const match = /language-(\w+)/.exec(className || '');
+              return !inline && match ? (
+                <Code language={match[1]} value={children} />
+              ) : (
+                <code className={className} {...props}>
+                  {children}
+                </code>
+              );
+            },
+          }}
+        />
       </div>
       {postId && (
         <div className={cx('comment')}>

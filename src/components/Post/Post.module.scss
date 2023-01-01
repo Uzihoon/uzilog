@@ -14,7 +14,8 @@
       color: #666;
     }
 
-    p {
+    p,
+    li {
       code {
         background: #f0f0f0;
         color: #444;
@@ -73,7 +74,8 @@
       color: #c9c9c9;
     }
 
-    p {
+    p,
+    li {
       code {
         background: #454545;
         color: #ffffff;
@@ -119,6 +121,9 @@
   .date {
     opacity: 1;
   }
+
+  li code {
+  }
 }
 
 /* Common mode */
@@ -131,6 +136,7 @@
     font-size: 15px;
     line-height: 28px;
   }
+  li,
   p {
     code {
       font-family: 'Ubuntu', 'Noto Sans KR', sans-serif;

@@ -7,16 +7,15 @@ const initialState: PostState = {
   post: {},
   edit: null,
   editInfo: null,
-  tempImg: []
+  tempImg: [],
 };
 
 const status = createReducer<PostState, PostAction>(initialState, {
   [SET_STORE]: (state: PostState, action) => {
     const { key, value } = action.payload;
     const k = key as keyof PostState;
-    (state[k] as any) = value;
-    return state;
-  }
+    return { ...state, [k]: value };
+  },
 });
 
 export default status;

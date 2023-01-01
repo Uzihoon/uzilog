@@ -10,22 +10,18 @@ const initialState: StatusState = {
 
 const status = createReducer<StatusState, StatusAction>(initialState, {
   [SET_PENDING]: (state: StatusState, action) => {
-    state.loading = true;
-    return state;
+    return { ...state, loading: true };
   },
   [SET_FINISH]: (state: StatusState, action) => {
-    state.loading = false;
-    return state;
+    return { ...state, loading: false };
   },
   [SET_STATUS]: (state: StatusState, action) => {
     const { key, value } = action.payload;
     const k = key as keyof StatusState;
-    (state[k] as any) = value;
-    return state;
+    return { ...state, [k]: value };
   },
   [SET_THEME]: (state: StatusState, action) => {
-    state.theme = action.payload;
-    return state;
+    return { ...state, theme: action.payload };
   },
 });
 

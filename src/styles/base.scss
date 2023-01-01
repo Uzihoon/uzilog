@@ -11,10 +11,18 @@
 body {
   font-size: 0px;
   font-family: 'Noto Sans KR', sans-serif;
+
+  button {
+    display: none;
+  }
 }
 
 #app {
   font-size: 14px;
+
+  button {
+    display: inline;
+  }
 }
 
 a {

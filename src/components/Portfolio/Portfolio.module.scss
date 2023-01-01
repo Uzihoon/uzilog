@@ -1,5 +1,37 @@
 @import '../../styles/var.scss';
 
+@media (prefers-color-scheme: light) {
+  .section-title {
+    div {
+      color: #373737;
+      &::after {
+        background-color: $mainColor;
+      }
+    }
+  }
+  .point {
+    background-color: $mainColor;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .section-title {
+    div {
+      color: #ffffff;
+      &::after {
+        background-color: $darkMainColor;
+      }
+    }
+  }
+  .point {
+    background-color: $darkMainColor;
+  }
+}
+
+a {
+  color: $darkMainColor;
+}
+
 .wrapper {
   width: 100%;
   max-width: 600px;
@@ -21,7 +53,6 @@
     .point {
       width: 200px;
       height: 200px;
-      background-color: $mainColor;
       position: absolute;
       right: -40px;
       top: -50px;
@@ -96,14 +127,6 @@
       .desc-value {
         width: 150px;
         text-align: left;
-
-        a {
-          color: #917e00;
-
-          &:hover {
-            color: #917e00;
-          }
-        }
       }
     }
   }
@@ -114,7 +137,6 @@
     .section-title {
       font-size: 2.5em;
       margin-bottom: 50px;
-      // color: $mainColor;
       font-weight: bold;
       text-align: center;
       position: relative;
@@ -123,14 +145,13 @@
       justify-content: center;
       div {
         position: relative;
-        color: #373737;
+
         &::after {
           content: '';
           display: block;
           width: 70%;
           max-width: 100px;
           height: 15px;
-          background-color: $mainColor;
           position: absolute;
           right: -15px;
           bottom: 2px;
@@ -204,14 +225,6 @@
 
     .section-desc-value {
       font-size: 0.9em;
-    }
-
-    a {
-      color: #222;
-      text-decoration: underline;
-      &:hover {
-        color: #222;
-      }
     }
   }
 }

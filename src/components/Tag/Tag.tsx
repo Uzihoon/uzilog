@@ -60,6 +60,7 @@ function Tag() {
         placeholder='Tag ID'
         className={cx('input')}
         onChange={handleForm}
+        style={{ display: 'inline' }}
       />
       <input
         type='text'
@@ -67,6 +68,7 @@ function Tag() {
         placeholder='Tag Name'
         className={cx('input')}
         onChange={handleForm}
+        style={{ display: 'inline' }}
       />
       <SketchPicker
         onChangeComplete={handleChangeColor}

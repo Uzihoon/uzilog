@@ -52,7 +52,12 @@ function Login() {
         <form onSubmit={handleLogin}>
           <div className={cx('item')}>
             <label htmlFor='inp' className={cx('inp')} title='email'>
-              <input id='inp' placeholder='&nbsp;' onChange={handleEmail} />
+              <input
+                id='inp'
+                placeholder='&nbsp;'
+                onChange={handleEmail}
+                style={{ display: 'inline' }}
+              />
               <span className={cx('label')}>Email</span>
               <span className={cx('border')}></span>
             </label>
@@ -64,6 +69,7 @@ function Login() {
                 type='password'
                 placeholder='&nbsp;'
                 onChange={handlePassword}
+                style={{ display: 'inline' }}
               />
               <span className={cx('label')}>Password</span>
               <span className={cx('border')}></span>

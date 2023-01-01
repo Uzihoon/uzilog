@@ -14,16 +14,16 @@ const cx = classNames.bind(styles);
 const menu = [
   {
     title: 'Title',
-    id: 'title'
+    id: 'title',
   },
   {
     title: 'Description',
-    id: 'desc'
+    id: 'desc',
   },
   {
     title: 'Tags',
-    id: 'tag'
-  }
+    id: 'tag',
+  },
 ];
 
 interface IHeaderProps {
@@ -76,7 +76,7 @@ function Header({ value, onChange, onPublish }: IHeaderProps) {
       <div className={cx('menu-box')}>
         <div className={cx('menu-wrapper')}>
           <Logo disable={true} onClick={onGoBack} />
-          {menu.map(m => (
+          {menu.map((m) => (
             <div
               className={cx('menu', current === m.id && 'select')}
               onClick={() => handleClick(m.id)}
@@ -102,7 +102,8 @@ function Header({ value, onChange, onPublish }: IHeaderProps) {
               placeholder='Title'
               value={value.title}
               name='title'
-              onChange={e => handleChange(e, 'title')}
+              onChange={(e) => handleChange(e, 'title')}
+              style={{ display: 'inline' }}
             />
           </div>
         )}
@@ -111,13 +112,13 @@ function Header({ value, onChange, onPublish }: IHeaderProps) {
             <textarea
               value={value.desc}
               placeholder='Description'
-              onChange={e => handleChange(e, 'desc')}
+              onChange={(e) => handleChange(e, 'desc')}
             />
           </div>
         )}
         {current === 'tag' && (
           <div className={cx('tag-box')}>
-            {tagList.map(tag => (
+            {tagList.map((tag) => (
               <label
                 htmlFor={tag.tagId}
                 className={cx('radio')}

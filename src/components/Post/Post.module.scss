@@ -231,7 +231,9 @@ blockquote {
     }
 
     .post-desc {
-      font-size: 0.9em !important;
+      span {
+        font-size: 0.9em !important;
+      }
     }
     h1 {
       line-height: 1.5em;

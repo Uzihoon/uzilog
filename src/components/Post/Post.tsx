@@ -141,6 +141,7 @@ function Post() {
           <span>{targetPost.desc}</span>
         </div>
       </div>
+      {/* <PostAd /> */}
       <div className={cx('content')}>
         <ReactMarkdown
           children={targetPost.content}

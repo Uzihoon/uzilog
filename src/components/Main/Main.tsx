@@ -19,6 +19,8 @@ const cx = classNames.bind(styles);
 
 const initial = [...Array(5)];
 
+const AD_COUNT = 6;
+
 function Main() {
   const [visible, setVisible] = useState(false);
   const [tempId, setTempId] = useState<string | null>(null);
@@ -43,7 +45,7 @@ function Main() {
     dataList
       .sort((a, b) => b.createdAt - a.createdAt)
       .forEach((list, index) => {
-        if (index && index % 3 === 0) {
+        if (index && index % AD_COUNT === 0) {
           newPostList.push(adItem);
         }
         newPostList.push(list);

@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, useEffect } from 'react';
 import styles from './GoogleAd.module.scss';
 import classNames from 'classnames/bind';
 
@@ -23,6 +23,18 @@ function GoogleAd({
   slot,
   responsive,
 }: GoogldAdProps) {
+  useEffect(() => {
+    if (process.env.NODE_ENV !== 'production') return;
+
+    try {
+      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
+        {}
+      );
+    } catch (e) {
+      console.error('UZILOG AD Error: ', e);
+    }
+  }, []);
+
   if (process.env.NODE_ENV !== 'production') {
     return (
       <div style={style} className={cx('ad-box')}>
